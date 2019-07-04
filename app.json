@@ -39,9 +39,6 @@
       }
     ]
   },
-  "navigateToMiniProgramAppIdList": [
-    "wxacc745e450e499ef"
-  ],
   "sitemapLocation": "sitemap.json",
   "permission": {
     "scope.userLocation": {
