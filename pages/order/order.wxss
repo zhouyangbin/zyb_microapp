@@ -1,0 +1,4 @@
+/**index.wxss**/
+.userinfo-nickname {
+  color: #aaa;
+}

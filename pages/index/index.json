@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "Select": "/component/select/select",
+    "Search": "/component/search/search",
+    "Index_card": "/component/index_card/index_card"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "dark"
+}

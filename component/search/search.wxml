@@ -1,0 +1,12 @@
+<view class='section-select-box'>
+  <view class='select-content'>
+    <text class='search-text' bindtap='selectToggleAction'>{{currentText}}</text>
+    <image class='select-img' bindtap='selectToggleAction' src='../images/Upward.png' animation="{{arrowAnimation}}">
+    </image>
+    <input class='select-text'placeholder="请输入内容" bindinput="bindKeyInput" value="{{inputValue}}" bindfocus="activeFocus" />
+  </view>
+  <view class='select-list' wx:if="{{isShow}}">
+      <view class='select-list-item' wx:for="{{searchArray}}" data-index="{{index}}" wx:key='{{index}}'bindtap='selectItemAction'>{{item.name}}
+      </view>
+  </view>
+</view>

@@ -1,0 +1,24 @@
+  <view class='card_box' bindtap='detail' wx:for="{{list}}" data-item='{{item}}' data-index="{{index}}" wx:key='{{index}}'>
+      <view class='card_img_box'>
+        <image class='card-img' src="{{item.img}}">
+        </image>
+      </view>
+      <view  class='card_info'>
+        <view  class='card_info1'>
+          <text class='card_info1_text1'>{{item.name}}</text>
+          <text class='card_info1_text2'>{{item.range || 0}} km</text>
+        </view>
+        <view  class='card_info2'>
+          <text class='card_info2_text1'>11111111</text>
+        </view>
+        <view  class='card_info3'>
+          <view class='card_info3_text1'>
+            <text class='card_info3_text1_1'>￥</text>
+            <text class='card_info3_text1_2'>{{item.price}} </text>
+          </view>
+          <view class='card_info3_text2'>
+            已售 {{item.salesNum}}
+          </view>
+        </view>
+      </view>
+  </view>
