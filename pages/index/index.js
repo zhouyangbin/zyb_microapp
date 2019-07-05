@@ -24,6 +24,7 @@ Page({
     address_data:null,
   },
   onLoad: function () {
+    console.log(wx.getStorageSync('user'))
     let that = this;
     if (app.globalData.userInfo) {
       this.setData({
@@ -64,7 +65,7 @@ Page({
     app.getPermission(that);    //传入that值可以在app.js页面直接设置内容
   }, 
   getUserInfo: function(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -80,7 +81,7 @@ Page({
       })
   },
   get_addr: function (data) {
-    console.log(data, '???');
+    // console.log(data, '???');
     this.setData({
       address_data:data,
     },()=>{
@@ -95,7 +96,7 @@ Page({
   get_product_list(){
     let that = this;
     let data = this.data.address_data;
-    console.log(data)
+    // console.log(data)
     wx.request({
       url: 'https://api.tiyushiyanshi.com/miniproduct/products', //index  product list
       data: {
@@ -110,7 +111,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
+        // console.log(res.data)
         that.setData({
           hidden: true,
           listArray: res.data.data

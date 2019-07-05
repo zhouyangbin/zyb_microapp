@@ -10,6 +10,8 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res)
+        
       }
     })
     // 获取用户信息
@@ -21,14 +23,15 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              console.log(res)
+              // console.log(res)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               };
             }
-          })
+          });
+
         } else {
           // 未授权，跳转到授权页面
           wx.reLaunch({
@@ -41,6 +44,26 @@ App({
   globalData: {
     userInfo: null,
     addressinfo:null,
+    appid: 'wxacc745e450e499ef',
+    secret: '68ed7cc942bab13ba5f6912c0f51f449',
+  },
+  getOpenid(){
+    var d = this.globalData;//这里存储了appid、secret、token串  
+    var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&             secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+    wx.request({
+      url: l,
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      // header: {}, // 设置请求的 header  
+      success: function (res) {
+        console.log(res)
+        var obj = {};
+        obj.openid = res.data.openid;
+        obj.expires_in = Date.now() + 7200;
+        console.log(obj);
+        wx.setStorageSync('user', obj);//存储openid  
+      }
+    });
   },
   getLocation: function (target) {
     let that = this;
