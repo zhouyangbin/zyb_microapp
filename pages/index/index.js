@@ -96,9 +96,9 @@ Page({
   get_product_list(){
     let that = this;
     let data = this.data.address_data;
-    // console.log(data)
+    console.log(data)
     wx.request({
-      url: 'https://api.tiyushiyanshi.com/miniproduct/products', //index  product list
+      url: 'https://api.tiyushiyanshi.com/mini-product/products', //index  product list
       data: {
         longitude: data.longitude,
         latitude: data.latitude,
@@ -111,11 +111,13 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        // console.log(res.data)
-        that.setData({
-          hidden: true,
-          listArray: res.data.data
-        });
+        console.log(res.data);
+        if (res.data.data){
+          that.setData({
+            hidden: true,
+            listArray: res.data.data
+          });
+        }
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh();
       },

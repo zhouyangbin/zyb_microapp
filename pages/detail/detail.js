@@ -1,32 +1,17 @@
+var wxConfig = require('../../wxConfig.js')
+const app = getApp()
 Component({
-  /**
- 1. 组件的属性列表
-   */
-  properties: {
-    selectArray: {
-      type: Array,
-    },
-    // 初始时要展示的内容
-    currentText: {
-      type: String,
+  data: {
+  },
+  methods: {
+    logInfo() {
+      console.log("发起请求获取数据");
     }
   },
-
-  /**
- 2. 组件的初始数据
-   */
-  data: {
-    isShow: false, // 初始option不显示
-    arrowAnimation: {} // 箭头的动画
-  },
-
-  /**
- 3. 组件的方法列表
-   */
-  methods: {
-
-  },
-  getPhoneNumber(){
-    console.log(123)
+  attached() {
+    // 第二种方式通过组件的生命周期函数执行代码
+    console.log(wx.getStorageSync('wx_login'));
+    console.log(wxConfig);
+    app.getOpenid();
   }
 })

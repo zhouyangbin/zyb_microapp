@@ -1,4 +1,5 @@
 //app.js
+var wxConfig = require('./wxConfig.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,8 +11,8 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
-        
+        // console.log(res);
+        wx.setStorageSync('wx_login', res);
       }
     })
     // 获取用户信息
@@ -44,24 +45,26 @@ App({
   globalData: {
     userInfo: null,
     addressinfo:null,
-    appid: 'wxacc745e450e499ef',
-    secret: '68ed7cc942bab13ba5f6912c0f51f449',
+    
   },
-  getOpenid(){
-    var d = this.globalData;//这里存储了appid、secret、token串  
-    var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&             secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+  getOpenid() {
+    var wx_login = wx.getStorageSync('wx_login'); //code这里存储了 
+    console.log(wx_login)
+    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + wxConfig.appid + '&secret=' + wxConfig.secret +
+      '&js_code=' + wx_login.code + '&grant_type=authorization_code';
+    console.log(url)
     wx.request({
-      url: l,
+      url: url,
       data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
-      // header: {}, // 设置请求的 header  
+      header: { 'content-type': 'application/json' },
       success: function (res) {
         console.log(res)
         var obj = {};
-        obj.openid = res.data.openid;
-        obj.expires_in = Date.now() + 7200;
-        console.log(obj);
-        wx.setStorageSync('user', obj);//存储openid  
+        // obj.openid = res.data.openid;
+        // obj.expires_in = Date.now() + 7200;
+        // console.log(obj);
+        // wx.setStorageSync('user', obj);//存储openid  
       }
     });
   },
