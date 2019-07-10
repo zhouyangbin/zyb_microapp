@@ -57,12 +57,10 @@ App({
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
-        console.log(res)
+      success: function (res) {        
         var obj = {};
-        obj.openid = res.data.msg.data.openid;
-        obj.expires_in = Date.now() + 7200;
-        console.log(obj);
+        obj.openid = res.data.openid;
+        obj.expires_in = Date.now() + 7200;        
         wx.setStorageSync('user', obj);//存储openid  
       }
     });
