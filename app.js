@@ -1,5 +1,5 @@
 //app.js
-var wxConfig = require('./wxConfig.js')
+var wxConfig = require('./wxConfig.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -49,20 +49,21 @@ App({
   },
   getOpenid() {
     var wx_login = wx.getStorageSync('wx_login'); //code这里存储了 
-    // console.log(wx_login);
-    var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + wxConfig.appid + '&secret=' + wxConfig.secret +
-      '&js_code=' + wx_login.code + '&grant_type=authorization_code';
+    console.log(wx_login);
+    var url = wxConfig.base_url+'/wechat/code2Session';
     wx.request({
       url: url,
-      data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
-      header: { 'content-type': 'application/json' },
+      data: {
+        'code': wx_login.code
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      header: { 'content-type': 'application/x-www-from-urlencoded' },
       success: function (res) {
         // console.log(res)
         var obj = {};
         obj.openid = res.data.openid;
         obj.expires_in = Date.now() + 7200;
-        // console.log(obj);
+        console.log(obj);
         wx.setStorageSync('user', obj);//存储openid  
       }
     });
