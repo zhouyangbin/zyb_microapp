@@ -57,11 +57,12 @@ App({
         'code': wx_login.code
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
-      header: { 'content-type': 'application/x-www-from-urlencoded' },
+
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
-        // console.log(res)
+        console.log(res)
         var obj = {};
-        obj.openid = res.data.openid;
+        obj.openid = res.data.msg.data.openid;
         obj.expires_in = Date.now() + 7200;
         console.log(obj);
         wx.setStorageSync('user', obj);//存储openid  
