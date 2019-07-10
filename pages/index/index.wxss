@@ -2,5 +2,4 @@
 .container {
   width: 100%;
   padding: 0 30rpx;
-  overflow-y: scroll;
 }

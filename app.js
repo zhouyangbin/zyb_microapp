@@ -6,13 +6,14 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         // console.log(res);
         wx.setStorageSync('wx_login', res);
+        this.getOpenid();
+        // this.getPermission();
       }
     })
     // 获取用户信息
@@ -32,7 +33,6 @@ App({
               };
             }
           });
-
         } else {
           // 未授权，跳转到授权页面
           wx.reLaunch({
@@ -40,31 +40,30 @@ App({
           })
         }
       }
-    })
+    });
   },
   globalData: {
     userInfo: null,
     addressinfo:null,
-    
+    Permissionaddressinfo: null,
   },
   getOpenid() {
     var wx_login = wx.getStorageSync('wx_login'); //code这里存储了 
-    console.log(wx_login)
+    // console.log(wx_login);
     var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + wxConfig.appid + '&secret=' + wxConfig.secret +
       '&js_code=' + wx_login.code + '&grant_type=authorization_code';
-    console.log(url)
     wx.request({
       url: url,
       data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log(res)
+        // console.log(res)
         var obj = {};
-        // obj.openid = res.data.openid;
-        // obj.expires_in = Date.now() + 7200;
+        obj.openid = res.data.openid;
+        obj.expires_in = Date.now() + 7200;
         // console.log(obj);
-        // wx.setStorageSync('user', obj);//存储openid  
+        wx.setStorageSync('user', obj);//存储openid  
       }
     });
   },
@@ -79,14 +78,17 @@ App({
     })
   },
   //获取用户地理位置权限
-  getPermission: function (obj) {
+  getPermission: function () {
+    let that = this;
     wx.chooseLocation({
       success: function (res) {
-        obj.setData({
-          addr: res      //调用成功直接设置地址
-        },()=>{
-          obj.get_addr();
-        })
+        console.log(res,"???")
+        that.globalData.Permissionaddressinfo = res;
+        // obj.setData({
+        //   addr: res      //调用成功直接设置地址
+        // },()=>{
+        //   obj.get_addr();
+        // })
       },
       fail: function () {
         wx.getSetting({
@@ -105,13 +107,15 @@ App({
                             title: '授权成功',
                             icon: 'success',
                             duration: 1000
-                          })
+                          });
                           //授权成功之后，再调用chooseLocation选择地方
                           wx.chooseLocation({
                             success: function (res) {
-                              obj.setData({
-                                addr: res.address
-                              })
+                              console.log(res, "111???")
+                              that.globalData.Permissionaddressinfo = res;
+                              // obj.setData({
+                              //   addr: res.address
+                              // })
                             },
                           })
                         } else {

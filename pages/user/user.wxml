@@ -6,3 +6,17 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+<view class='list'bindtap='getScancode'>
+  <view class='list_left'>
+    <image class='list_img' src='../../static/images/user_scan.png'></image>
+    <text>扫一扫验票</text>
+  </view>
+  <view class='arrow'></view>
+</view>
+<view class='list'>
+  <view>
+    <image class='list_img' src='../../static/images/user_serach.png'></image>
+    <text>手机号查票</text>
+  </view>
+  <view class='arrow'></view>
+</view>

@@ -3,6 +3,6 @@
     加载中...
 </loading>
 <Search class="section-select" search-array='{{searchArray}}'  current-text="{{current_text}}" bind:getNowData='getSearch_text'></Search>
-<view scroll-y  style="height:{{height+'px'}}"  class="container">
+<scroll-view scroll-y  style="height:{{height+'px'}}"  class="container" bindscrolltolower="scroll_bottom">
     <Index_card height="{{height}}"  list='{{listArray}}'></Index_card>
-</view>
+</scroll-view>

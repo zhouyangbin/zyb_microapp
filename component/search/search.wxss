@@ -1,10 +1,9 @@
 .section-select-box {
-  margin:20rpx 30rpx 0 30rpx;
-  width: 690rpx;
-  background: red;
+  width: 700rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 2rpx solid #e2e2e2;
 }
 .select-content {
-  border-bottom: 2rpx solid #e2e2e2;
   background: white;
   height: 80rpx;
   line-height: 80rpx;

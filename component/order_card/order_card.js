@@ -1,11 +1,15 @@
+const util = require('../../utils/util.js')
 Component({
   properties: {
-    list: {
+    orderList: {
       type: Array,
     },
     height: {
       type: Number,
     },
+  },
+  attached() {
+    console.log("???");
   },
   data: {
   },
@@ -16,5 +20,5 @@ Component({
         url: '../detail/detail?productId=111'
       })
     }
-  },
+  }
 })

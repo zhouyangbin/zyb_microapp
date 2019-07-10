@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "订单",
-  "usingComponents": {}
+  "enablePullDownRefresh": false,
+  "component": true,
+  "usingComponents": {
+    "Order_card": "/component/order_card/order_card"
+  }
 }

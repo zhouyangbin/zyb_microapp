@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const wxConfig = require('../../wxConfig.js')
 Page({
   data: {
     hidden:false,
@@ -20,19 +20,21 @@ Page({
       { name: '广州' },
     ],
     listArray: [],
-    height: wx.getSystemInfoSync().windowHeight-50,
+    height: wx.getSystemInfoSync().windowHeight-70,
     address_data:null,
+    page: 1,
+    limit: 5,
+    total:null,
   },
   onLoad: function () {
-    console.log(wx.getStorageSync('user'))
     let that = this;
     if (app.globalData.userInfo) {
       this.setData({
         hidden: true
-      },()=>{
+      }, () => {
         app.getLocation(that);
       });
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
@@ -51,61 +53,48 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true,
             hidden: true
-          },()=>{
+          }, () => {
             app.getLocation(that);
           })
         }
       })
     };
-    // this.getAddress();
+  },
+  onShow: function () {
     
   },
   getAddress: function () {
     var that = this;
     app.getPermission(that);    //传入that值可以在app.js页面直接设置内容
   }, 
-  getUserInfo: function(e) {
-    // console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true,
-    })
-  },
   getSearch_text: function (e) {
       let item = e.detail;
       wx.showToast({
         title: item.latitude,
-        icon: 'success',
+        icon: 'loading',
         duration: 2000
       })
   },
   get_addr: function (data) {
-    // console.log(data, '???');
     this.setData({
       address_data:data,
     },()=>{
-      wx.showToast({
-        title: "123",
-        icon: 'success',
-        duration: 2000
-      })
       this.get_product_list()
     })
   },
   get_product_list(){
     let that = this;
     let data = this.data.address_data;
-    console.log(data)
-    wx.request({
-      url: 'https://api.tiyushiyanshi.com/mini-product/products', //index  product list
-      data: {
-        longitude: data.longitude,
-        latitude: data.latitude,
-        distance: '5000',
-        page: '1',
-        limit: '20',
-      },
+    let sendData = null;
+    sendData = {
+      longitude: data.longitude,
+      latitude: data.latitude,
+      page: that.data.page,
+      limit: that.data.limit,
+    };
+    wx.request({//index  product list
+      url: wxConfig.base_url+"/mini-product/products", 
+      data: sendData,
       method:'GET',
       header: {
         'content-type': 'application/json' // 默认值
@@ -115,7 +104,20 @@ Page({
         if (res.data.data){
           that.setData({
             hidden: true,
-            listArray: res.data.data
+            listArray: that.data.listArray.concat(res.data.data),
+            total: res.data.count,
+          });
+        }else{
+          that.setData({
+            hidden: true,
+            listArray: [],
+            total: res.data.count,
+          },()=>{
+            wx.showToast({
+              title: "没有数据",
+              icon: 'loading',
+              duration: 2000
+            })
           });
         }
         wx.hideNavigationBarLoading() //完成停止加载
@@ -130,6 +132,22 @@ Page({
        },//请求失败
     })
   },
+  scroll_bottom() {
+    if (this.data.total > this.data.listArray.length){
+      this.setData({
+        page: this.data.page + 1,
+        hidden:false
+      }, () => {
+        this.get_product_list();
+      });
+    }else{
+      wx.showToast({
+        title: "没有更多数据",
+        icon: 'success',
+        duration: 1000
+      })
+    }
+  }, 
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.setData({
@@ -137,12 +155,5 @@ Page({
     },()=>{
       this.get_product_list();
     })
-    // setTimeout(()=>{
-    //   this.setData({
-    //     hidden: true,
-    //   });
-    // wx.hideNavigationBarLoading() //完成停止加载
-    // wx.stopPullDownRefresh();
-    // },2000)
   },
 })

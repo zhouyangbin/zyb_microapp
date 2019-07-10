@@ -1,31 +1,94 @@
-var order = ['red', 'yellow', 'blue', 'green', 'red']
+const wxConfig = require('../../wxConfig.js')
 Page({
   data: {
-    toView: 'red',
-    scrollTop: 100
+    tab_index: '1',
+    hidden: false,
+    height: wx.getSystemInfoSync().windowHeight - 50,
+    orderArray: [],
+    page:1,
+    limit:4,
+    total:null
   },
-  upper: function (e) {
-    console.log(e)
+  onLoad: function () {
+    this.get_order();
   },
-  lower: function (e) {
-    console.log(e)
+  onShow: function () {
+    
   },
-  scroll: function (e) {
-    console.log(e)
-  },
-  tap: function (e) {
-    for (var i = 0; i < order.length; ++i) {
-      if (order[i] === this.data.toView) {
-        this.setData({
-          toView: order[i + 1]
-        })
-        break
-      }
-    }
-  },
-  tapMove: function (e) {
+  tabClick: function (e) {
     this.setData({
-      scrollTop: this.data.scrollTop + 10
+      page: 1,
+      orderArray:[],
+      tab_index: e.target.dataset.num
+    },()=>{
+      this.get_order();
     })
-  }
+  },
+  get_order(){
+    let user = wx.getStorageSync('user');
+    let that = this;
+    let sendData=null;
+    sendData={
+      openid: user.openid,
+      page: that.data.page,
+      limit: that.data.limit,
+    };
+    if(that.data.tab_index == 1){
+      sendData.consumeStatus = 1
+    }
+    if (that.data.tab_index == 2) {
+      sendData.consumeStatus = 0;
+      sendData.payStatus = 1
+    }
+    if (that.data.tab_index == 3) {
+      sendData.payStatus = 0
+    }
+    console.log(user)
+    wx.request({//index  product list
+      url: wxConfig.base_url + "/mini-order/orders",
+      data: sendData,
+      method: 'GET',
+      header: {'content-type': 'application/json'},
+      success(res) {
+        console.log(res.data.data);
+        if (res.data.data) {
+          that.setData({
+            hidden: true,
+            orderArray: that.data.orderArray.concat(res.data.data),
+            total:res.data.count
+          });
+        }else{
+          that.setData({
+            hidden: true,
+            orderArray: [],
+            total: res.data.count
+          });
+        }
+      },
+      fail: function (err) {
+        wx.showToast({
+          title: "444",
+          icon: 'success',
+          duration: 2000
+        })
+      },//请求失败
+    })
+  },
+  scroll_bottom(){
+    console.log(123);
+    if (this.data.total > this.data.orderArray.length) {
+      this.setData({
+        page: this.data.page + 1,
+        hidden: false
+      }, () => {
+        this.get_order();
+      });
+    } else {
+      wx.showToast({
+        title: "没有更多数据",
+        icon: 'success',
+        duration: 1000
+      })
+    }
+  } 
 })
