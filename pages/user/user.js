@@ -58,29 +58,28 @@ Page({
       }
     })
   },
-  getPhoneNumber(e){
-    console.log(e);
-    let user = wx.setStorageSync('openid');
-    var url = wxConfig.base_url + '/mini-user/users/id';
+  getPhoneNumber(e) {
+    var user = wx.getStorageSync('user'); 
     wx.request({
-      url: url,
-      data: {
-        'openid': user.openid
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      url: wxConfig.base_url +'/wechat/phoneNumber',
+      method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
-        console.log(res)
+      data: {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        sessionKey: user.session_key
+      },
+      success: function(res) {
         if (res.statusCode == 200 && res.data.code == 0) {
-
-        } else {
+          console.log(res.data.data);
+      } else {
           wx.showToast({
             title: '获取失败',
             icon: 'fail',
             duration: 1000
           });
         }
-      }
+      },
     });
   }
 })

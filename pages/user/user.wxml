@@ -20,4 +20,5 @@
   </view>
   <view class='arrow'></view>
 </view>
-<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权 | 登陆</button> 
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+

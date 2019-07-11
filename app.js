@@ -57,11 +57,16 @@ App({
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
-        console.log(res)
-        if (res.statusCode == 200 && res.data.code ==0){
-          wx.setStorageSync('openid', res.data.openid);//存储openid
-          wx.setStorageSync('expires_in', res.data.session_key);//存储openid
+
+      success: function (res) {        
+        var obj = {};
+
+        if (res.statusCode == 200){
+          obj.openid = res.data.openid;
+          obj.session_key = res.data.session_key
+          obj.expires_in = Date.now() + 7200;
+          // console.log(obj, "////");
+          wx.setStorageSync('user', obj);//存储openid
         }else{
           wx.showToast({
             title: '获取失败',

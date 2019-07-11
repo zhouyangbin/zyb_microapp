@@ -72,7 +72,7 @@ Page({
       wx.showToast({
         title: item.latitude,
         icon: 'loading',
-        duration: 2000
+        duration: 1000
       })
   },
   get_addr: function (data) {
@@ -105,7 +105,7 @@ Page({
           that.setData({
             hidden: true,
             listArray: that.data.listArray.concat(res.data.data),
-            total: res.data.count,
+            total: res.data.count
           });
         }else{
           that.setData({

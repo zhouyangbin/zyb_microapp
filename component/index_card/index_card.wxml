@@ -6,10 +6,9 @@
       <view  class='card_info'>
         <view  class='card_info1'>
           <text class='card_info1_text1'>{{item.name}}</text>
-          <text class='card_info1_text2'>{{item.range || 0}} km</text>
         </view>
         <view  class='card_info2'>
-          <text class='card_info2_text1'>11111111</text>
+          <text class='card_info2_text1'>{{item.descr}}</text>
         </view>
         <view  class='card_info3'>
           <view class='card_info3_text1'>
