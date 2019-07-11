@@ -10,7 +10,6 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res);
         wx.setStorageSync('wx_login', res);
         this.getOpenid();
         // this.getPermission();
@@ -23,9 +22,9 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              // console.log(res)
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              // console.log(res)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -57,16 +56,12 @@ App({
         'code': wx_login.code
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
-
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {
         console.log(res)
-        var obj = {};
-        if (res.statusCode == 200){
-          obj.openid = res.data.openid;
-          obj.expires_in = Date.now() + 7200;
-          // console.log(obj, "////");
-          wx.setStorageSync('user', obj);//存储openid
+        if (res.statusCode == 200 && res.data.code ==0){
+          wx.setStorageSync('openid', res.data.openid);//存储openid
+          wx.setStorageSync('expires_in', res.data.session_key);//存储openid
         }else{
           wx.showToast({
             title: '获取失败',
@@ -74,7 +69,6 @@ App({
             duration: 1000
           });
         }
-          
       }
     });
   },

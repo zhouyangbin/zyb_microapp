@@ -1,14 +1,14 @@
   <view class='head_box'>
     <view class='detail_head'>
         <view class='detail_img_box'>
-          <image class='detail_img' src="../../static/images/user.png">
+          <image class='detail_img' src="{{info.img}}" data-src="{{info.img}}" bindtap='review_img'>
           </image>
         </view>
         <view  class='detail_info'>
           <view class='detail_info1'>
-            <view class='detail_info1_name'>{{title}}</view>
-            <view class='detail_info1_desc'>{{title}}</view>
-            <view class='detail_info1_price'>￥{{price}}</view>
+            <view class='detail_info1_name'>{{info.name}}</view>
+            <view class='detail_info1_desc'>{{info.descr}}</view>
+            <view class='detail_info1_price'>￥{{info.price}}</view>
           </view>
           <view  class='detail_info2'>
             <view class='detail_info2_minus' bindtap='total_minus'>-</view>
@@ -19,7 +19,7 @@
     </view>
     <view class='detail_desc'>
             <view class='detail_desc_1'>小计</view>
-            <view class='text_30rpx color_F60 font_weiget_blod'>￥{{price*total}}</view>
+            <view class='text_30rpx color_F60 font_weiget_blod'>￥{{info.price*total}}</view>
     </view>
 </view>
 <view class='head_box'>
@@ -37,7 +37,7 @@
       <text>实付金额</text>
     </view>
     <view class='list_left'>
-      <text class='text_30rpx color_F60 font_weiget_blod'>￥{{price*total}}</text>
+      <text class='text_30rpx color_F60 font_weiget_blod'>￥{{info.price*total}}</text>
     </view>
   </view>
   <view class='list'>
@@ -49,6 +49,6 @@
     </view>
   </view>
 </view>
-<view class='bottom_box background_F60 '>
-    <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{price*total}} </text>
+<view class='bottom_box background_F60 ' bindtap='pay'>
+    <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{info.price*total}} </text>
 </view>

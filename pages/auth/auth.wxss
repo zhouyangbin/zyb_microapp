@@ -22,8 +22,8 @@ page {
   background-color: #fff;
   margin: 0 0 60rpx;
   display: inline-block;
-  width: 200rpx;
-  height: 200rpx;
+  width: 100rpx;
+  height: 100rpx;
   line-height: 0;
 }
 

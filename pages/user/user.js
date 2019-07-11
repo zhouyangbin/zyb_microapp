@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const wxConfig = require('../../wxConfig.js')
 Page({
   data: {
     motto: 'Hello World',
@@ -11,6 +11,7 @@ Page({
 
   },
   onLoad: function () {
+    console.log(wx);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -56,6 +57,30 @@ Page({
         })
       }
     })
+  },
+  getPhoneNumber(e){
+    console.log(e);
+    let user = wx.setStorageSync('openid');
+    var url = wxConfig.base_url + '/mini-user/users/id';
+    wx.request({
+      url: url,
+      data: {
+        'openid': user.openid
+      },
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        console.log(res)
+        if (res.statusCode == 200 && res.data.code == 0) {
 
+        } else {
+          wx.showToast({
+            title: '获取失败',
+            icon: 'fail',
+            duration: 1000
+          });
+        }
+      }
+    });
   }
 })

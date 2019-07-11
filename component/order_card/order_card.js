@@ -9,7 +9,6 @@ Component({
     },
   },
   attached() {
-    console.log("???");
   },
   data: {
   },

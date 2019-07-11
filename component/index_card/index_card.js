@@ -13,7 +13,7 @@ Component({
     detail(event){
       console.log(event.currentTarget.dataset.item.productId);
       wx.navigateTo({
-        url: '../detail/detail?productId=111'
+        url: '../detail/detail?id=' + event.currentTarget.dataset.item.productId
       })
     }
   },

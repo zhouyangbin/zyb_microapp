@@ -100,7 +100,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.data){
           that.setData({
             hidden: true,
