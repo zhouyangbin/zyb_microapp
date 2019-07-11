@@ -4,3 +4,30 @@ body{
   padding: 0;
   margin: 0;
 }
+.border_none{
+  border:none;
+}
+.text_26rpx{
+  font-size: 26rpx;
+}
+.text_30rpx{
+  font-size: 30rpx;
+}
+.text_36rpx{
+  font-size: 36rpx;
+}
+.font_weiget_blod{
+  font-weight: bold;
+}
+.color_F60{
+  color:#F60;
+}
+.color_Ffff{
+  color:#fff;
+}
+.color_Ffff{
+  color:#fff;
+}
+.background_F60{
+  background:#F60;
+}

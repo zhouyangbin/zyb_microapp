@@ -1,4 +1,54 @@
-<view class='detail-box'>
-  <button class='pop_btn' plain="true"
-open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">获取用户手机号</button>
+  <view class='head_box'>
+    <view class='detail_head'>
+        <view class='detail_img_box'>
+          <image class='detail_img' src="../../static/images/user.png">
+          </image>
+        </view>
+        <view  class='detail_info'>
+          <view class='detail_info1'>
+            <view class='detail_info1_name'>{{title}}</view>
+            <view class='detail_info1_desc'>{{title}}</view>
+            <view class='detail_info1_price'>￥{{price}}</view>
+          </view>
+          <view  class='detail_info2'>
+            <view class='detail_info2_minus' bindtap='total_minus'>-</view>
+            <view class='detail_info2_total'>{{total}}</view>
+            <view class='detail_info2_plus' bindtap='total_plus'>+</view>
+          </view>
+        </view>
+    </view>
+    <view class='detail_desc'>
+            <view class='detail_desc_1'>小计</view>
+            <view class='text_30rpx color_F60 font_weiget_blod'>￥{{price*total}}</view>
+    </view>
+</view>
+<view class='head_box'>
+  <view class='list'>
+    <view class='list_left'>
+      <text>抵用券</text>
+    </view>
+    <view class='list_left'>
+      <text>暂无可用</text>
+      <image class='list_img' src='../../static/images/icon_right.png'></image>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='list_left'>
+      <text>实付金额</text>
+    </view>
+    <view class='list_left'>
+      <text class='text_30rpx color_F60 font_weiget_blod'>￥{{price*total}}</text>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='list_left'>
+      <text>手机号</text>
+    </view>
+    <view class='list_left'>
+      <text>￥{{price*total}}</text>
+    </view>
+  </view>
+</view>
+<view class='bottom_box background_F60 '>
+    <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{price*total}} </text>
 </view>

@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const wxConfig = require('../../wxConfig.js')
 
 Page({
   data: {
@@ -54,6 +55,26 @@ Page({
           result: result,
 
         })
+      }
+    })
+  },
+  getPhoneNumber(e) {
+    var user = wx.getStorageSync('user'); 
+    console.log(user.session_key);
+    // console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+
+    wx.request({
+      url: wxConfig.base_url +'/wechat/phoneNumber',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      data: {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        sessionKey: user.session_key
+      },success: function(res) {
+          console.log(res);
       }
     })
 

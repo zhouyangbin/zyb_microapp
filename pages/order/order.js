@@ -61,7 +61,7 @@ Page({
           that.setData({
             hidden: true,
             orderArray: [],
-            total: res.data.count
+            total: null
           });
         }
       },

@@ -1,5 +1,5 @@
 //app.js
-var wxConfig = require('./wxConfig.js')
+var wxConfig = require('./wxConfig.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -49,6 +49,7 @@ App({
   },
   getOpenid() {
     var wx_login = wx.getStorageSync('wx_login'); //code这里存储了 
+    console.log(wx_login);
     var url = wxConfig.base_url+'/wechat/code2Session';
     wx.request({
       url: url,
@@ -56,12 +57,24 @@ App({
         'code': wx_login.code
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {        
         var obj = {};
-        obj.openid = res.data.openid;
-        obj.expires_in = Date.now() + 7200;        
-        wx.setStorageSync('user', obj);//存储openid  
+
+        if (res.statusCode == 200){
+          obj.openid = res.data.openid;
+          obj.session_key = res.data.session_key
+          obj.expires_in = Date.now() + 7200;
+          // console.log(obj, "////");
+          wx.setStorageSync('user', obj);//存储openid
+        }else{
+          wx.showToast({
+            title: '获取失败',
+            icon: 'fail',
+            duration: 1000
+          });
+        }        
       }
     });
   },
