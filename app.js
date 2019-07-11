@@ -62,10 +62,19 @@ App({
       success: function (res) {
         console.log(res)
         var obj = {};
-        obj.openid = res.data.msg.data.openid;
-        obj.expires_in = Date.now() + 7200;
-        console.log(obj);
-        wx.setStorageSync('user', obj);//存储openid  
+        if (res.statusCode == 200){
+          obj.openid = res.data.openid;
+          obj.expires_in = Date.now() + 7200;
+          // console.log(obj, "////");
+          wx.setStorageSync('user', obj);//存储openid
+        }else{
+          wx.showToast({
+            title: '获取失败',
+            icon: 'fail',
+            duration: 1000
+          });
+        }
+          
       }
     });
   },
