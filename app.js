@@ -57,11 +57,10 @@ App({
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
       header: { 'content-type': 'application/x-www-form-urlencoded' },
-
       success: function (res) {        
         var obj = {};
-
         if (res.statusCode == 200){
+          console.log(res)
           obj.openid = res.data.openid;
           obj.session_key = res.data.session_key
           obj.expires_in = Date.now() + 7200;
