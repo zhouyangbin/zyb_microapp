@@ -59,15 +59,16 @@ Page({
     })
   },
   getPhoneNumber(e) {
-    var user = wx.getStorageSync('user'); 
+    var user = wx.getStorageSync('user');   
     wx.request({
       url: wxConfig.base_url +'/wechat/phoneNumber',
       method: 'POST',
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       data: {
+        openid: user.openid,
+        sessionKey: user.session_key,
         encryptedData: e.detail.encryptedData,
-        iv: e.detail.iv,
-        sessionKey: user.session_key
+        iv: e.detail.iv,        
       },
       success: function(res) {
         if (res.statusCode == 200 && res.data.code == 0) {
