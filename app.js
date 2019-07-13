@@ -48,21 +48,22 @@ App({
   },
   getOpenid() {
     var wx_login = wx.getStorageSync('wx_login'); //code这里存储了 
-    console.log(wx_login);
     var url = wxConfig.base_url+'/wechat/code2Session';
     wx.request({
       url: url,
       data: {
         'code': wx_login.code
       },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+      method: 'POST', 
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (res) {        
         var obj = {};
         if (res.statusCode == 200){
-          console.log(res)
           obj.openid = res.data.openid;
-          obj.session_key = res.data.session_key
+          obj.session_key = res.data.session_key;
+          if(res.data.phoneNumber != undefined) {
+            obj.phoneNumber = res.data.phoneNumber;
+          }
           obj.expires_in = Date.now() + 7200;
           // console.log(obj, "////");
           wx.setStorageSync('user', obj);//存储openid

@@ -7,13 +7,11 @@ Component({
       type: Number,
     },
   },
-  data: {
-  },
+  data: {},
   methods: {
-    detail(event){
-      console.log(event.currentTarget.dataset.item.productId);
+    detail(event) {
       wx.navigateTo({
-        url: '../detail/detail?id=' + event.currentTarget.dataset.item.productId
+        url: '../detail/detail?id=' + event.currentTarget.dataset.item.productId + '&admin_id=' + event.currentTarget.dataset.item.adminId
       })
     }
   },

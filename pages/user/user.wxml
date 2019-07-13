@@ -21,4 +21,5 @@
   <view class='arrow'></view>
 </view>
 <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
-
+<button bindtap='submitOrder'>提交订单</button>
+<button bindtap='submitRedirect'>跳转</button>
