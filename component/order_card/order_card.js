@@ -16,9 +16,9 @@ Component({
   methods: {
     detail(event){
       console.log(event.currentTarget.dataset.item.productId);
-      // wx.navigateTo({
-        // url: '../detail/detail?productId=111'
-      // })
+      wx.navigateTo({
+        url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
+      })
     },
     doPay(event) {
       var user = wx.getStorageSync('user');
@@ -48,5 +48,4 @@ Component({
       })
     }
   }
-  
 })
