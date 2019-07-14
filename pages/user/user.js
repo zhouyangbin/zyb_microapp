@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 const wxConfig = require('../../wxConfig.js')
+
 Page({
   data: {
     motto: 'Hello World',
@@ -39,7 +40,8 @@ Page({
           })
         }
       })
-    }
+    };
+    this.checkScan();
   },
   onShow(){
     console.log(app.globalData.userInfo)
@@ -87,47 +89,28 @@ Page({
       },
     });
   },
-  submitOrder : function(e) {
-    var user = wx.getStorageSync('user'); 
+  // 检查是否是扫码人员
+  checkScan(e) {
+    var user = wx.getStorageSync('user');
+    console.log(user);
+    var that = this;
+    wx.request({
+      url: wxConfig.base_url+'/mini-scan/check-scan',
+      method: 'POST',
+      data: {
+        openid: user.openid,
+        cellPhone: user.phoneNumber,
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success:function(res){
+        if(res.data.code != 0) {
+          that.setData({
+            hidden: true
+          })
+        }
+      },fail:function(err){
 
-    wx.redirectTo({
-      url: '/pages/pay/pay?timeStamp=1563002622&nonceStr=1523423607&package=&prepay_id=wx131523426436482ec791051d1411109700&signType=MD5&paySign=B19D1F05B006E65561B9A3BBA64BA073&appid=wx6f8898d9291238a1&orderNo=201907132504408185176064&totalFee=10'
-    })  
-    // wx.request({
-    //   url: wxConfig.base_url+'/mini-order/order',
-    //   method: 'POST',
-    //   data: {
-    //     openid: user.openid,
-    //     productId: 18,
-    //     ticketNums: 1,
-    //     cellPhone: '18610612576',
-    //     payableAmount: 0.1,
-    //     realAmount: 0.1
-    //   },
-    //   header: { 'content-type': 'application/x-www-form-urlencoded' },
-    //   success: function(e){
-    //     wx.request({
-    //       url: e.data.data.redirect_url,
-    //       data:{
-    //         openId: user.openid
-    //       },
-    //       header: { 'content-type': 'application/x-www-form-urlencoded' },
-    //       success: function(pay) {
-    //         var that = this;
-    //         console.log("----------------");
-    //         var payUrl = pay.data;
-    //         console.log(payUrl);
-    //          wx.redirectTo({
-    //            url: '/pages/pay/pay?timeStamp=1563002622&nonceStr=1523423607&package=prepay_id=wx131523426436482ec791051d1411109700& signType=MD5&paySign=B19D1F05B006E65561B9A3BBA64BA073&appid=wx6f8898d9291238a1&orderNo=201907132504408185176064&totalFee=10'
-    //          })
-    //       } 
-    //     })
-    //   }
-    // })
-  },
-  submitRedirect: function(e) {
-    wx.redirectTo({
-      url: '/pages/pay/pay?id=1',
+      }
     })
   }
 })

@@ -6,6 +6,8 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+
+<block wx:if="{{hidden != true}}">
 <view class='list'bindtap='getScancode'>
   <view class='list_left'>
     <image class='list_img' src='../../static/images/user_scan.png'></image>
@@ -20,6 +22,7 @@
   </view>
   <view class='arrow'></view>
 </view>
+</block>
 <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
 <button bindtap='submitOrder'>提交订单</button>
 <button bindtap='submitRedirect'>跳转</button>

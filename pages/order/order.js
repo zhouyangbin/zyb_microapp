@@ -1,7 +1,8 @@
-const wxConfig = require('../../wxConfig.js')
+const wxConfig = require('../../wxConfig.js');
+var util = require('../../utils/util.js');
 Page({
   data: {
-    tab_index: '1',
+    tab_index: '5',
     hidden: false,
     height: wx.getSystemInfoSync().windowHeight - 50,
     orderArray: [],
@@ -50,7 +51,18 @@ Page({
       method: 'GET',
       header: {'content-type': 'application/json'},
       success(res) {
-        console.log(res.data.data);
+        for(var i in res.data.data) {
+          let date = util.formatTime(new Date(res.data.data[i].createTime));
+         
+          // date = date.replace(new RegExp('/', 'g'), '/');
+          
+          // date = date ? new Date(date) : new Date();
+          // const year = date.getFullYear();
+          // const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          // const day = date.getDate().toString().padStart(2, '0');
+  
+          res.data.data[i].createTime = date;
+        }
         if (res.data.data) {
           that.setData({
             hidden: true,
