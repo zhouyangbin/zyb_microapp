@@ -93,13 +93,13 @@ Page({
     }
     this.setData({
       total: totalNum,
-      payableAmount: totalNum  * this.data.info.price,
+      payableAmount: (totalNum  * this.data.info.price).toFixed(2),
       realAmount: realAmount,
     })
   },
   total_plus() {
     var totalNum = this.data.total + 1;
-    var realAmount = totalNum * this.data.info.price;
+    var realAmount = (totalNum * this.data.info.price).toFixed(2);
     if (this.data.active != null) {
       if (totalNum >= this.data.active.ticketNums) {
         realAmount = (totalNum * this.data.info.price * (this.data.active.discount / 10)).toFixed(2);
@@ -107,7 +107,7 @@ Page({
     }
     this.setData({
       total: totalNum,
-      payableAmount: totalNum * this.data.info.price,
+      payableAmount: (totalNum * this.data.info.price).toFixed(2),
       realAmount: realAmount,
     })
   },
@@ -124,7 +124,6 @@ Page({
       })
       return;
     }
-    var user = wx.getStorageSync('user');
     wx.request({
       url: wxConfig.base_url + '/mini-order/order',
       method: 'POST',

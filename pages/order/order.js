@@ -1,7 +1,8 @@
-const wxConfig = require('../../wxConfig.js')
+const wxConfig = require('../../wxConfig.js');
+var util = require('../../utils/util.js');
 Page({
   data: {
-    tab_index: '1',
+    tab_index: '5',
     hidden: false,
     height: wx.getSystemInfoSync().windowHeight - 50,
     orderArray: [],
@@ -50,7 +51,9 @@ Page({
       method: 'GET',
       header: {'content-type': 'application/json'},
       success(res) {
-        console.log(res.data.data);
+        for(var i in res.data.data) {
+          res.data.data[i].createTime = util.formatTime(new Date(res.data.data[i].createTime))
+        }
         if (res.data.data) {
           that.setData({
             hidden: true,

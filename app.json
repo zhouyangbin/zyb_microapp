@@ -16,9 +16,7 @@
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#F60",
-    "backgroundColor": "red",
-    "position": "bottom",
+    "selectedColor": "#E54847",
     "list": [
       {
         "pagePath": "pages/index/index",

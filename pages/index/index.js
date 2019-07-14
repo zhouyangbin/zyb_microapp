@@ -83,6 +83,9 @@ Page({
     })
   },
   get_product_list(){
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     let that = this;
     let data = this.data.address_data;
     let sendData = null;
@@ -107,6 +110,7 @@ Page({
             listArray: that.data.listArray.concat(res.data.data),
             total: res.data.count
           });
+          // wx.hideLoading();
         }else{
           that.setData({
             hidden: true,
@@ -127,7 +131,7 @@ Page({
         wx.showToast({
           title: "444",
           icon: 'success',
-          duration: 2000
+          duration: 5000
         })
        },//请求失败
     })
