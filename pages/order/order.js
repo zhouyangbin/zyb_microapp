@@ -52,7 +52,16 @@ Page({
       header: {'content-type': 'application/json'},
       success(res) {
         for(var i in res.data.data) {
-          res.data.data[i].createTime = util.formatTime(new Date(res.data.data[i].createTime))
+          let date = util.formatTime(new Date(res.data.data[i].createTime));
+         
+          // date = date.replace(new RegExp('/', 'g'), '/');
+          
+          // date = date ? new Date(date) : new Date();
+          // const year = date.getFullYear();
+          // const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          // const day = date.getDate().toString().padStart(2, '0');
+  
+          res.data.data[i].createTime = date;
         }
         if (res.data.data) {
           that.setData({
