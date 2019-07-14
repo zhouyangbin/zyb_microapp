@@ -14,9 +14,9 @@ Component({
   },
   methods: {
     detail(event){
-      console.log(event.currentTarget.dataset.item.productId);
+      console.log(event.currentTarget.dataset.item.orderId);
       wx.navigateTo({
-        url: '../detail/detail?productId=111'
+        url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
       })
     }
   }

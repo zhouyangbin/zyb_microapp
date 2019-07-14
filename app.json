@@ -5,7 +5,9 @@
     "pages/order/order",
     "pages/detail/detail",
     "pages/auth/auth",
-    "pages/check_order/check_order"
+    "pages/check_order/check_order",
+    "pages/order_detail/order_detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

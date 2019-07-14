@@ -27,3 +27,5 @@
         </view>
       </view>
   </view>
+  <view  wx:if="{{orderArray.length}}">{{orderArray}}暂无数据</view>
+  

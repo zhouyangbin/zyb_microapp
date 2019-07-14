@@ -1,0 +1,51 @@
+  <view class='head_box'>
+    <view class='detail_head'>
+        <view class='detail_img_box'>
+          <image class='detail_img' src="{{info.img}}" data-src="{{info.img}}" bindtap='review_img'>
+          </image>
+        </view>
+        <view  class='detail_info'>
+          <view class='detail_info1'>
+            <view class='detail_info1_name'>{{info.name}}</view>
+            <view class='detail_info1_desc'>{{info.descr}}</view>
+            <view class='detail_info1_price'>￥{{info.price}}</view>
+          </view>
+        </view>
+    </view>
+</view>
+<view class='head_box'>
+  <view class='list'>
+    <view class='list_left'>
+      <text>优惠金额</text>
+    </view>
+    <view class='list_left'>
+      <text>{{activeContent}}</text>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='list_left'>
+       <text class='text_30rpx color_F60 font_weiget_blod'>￥{{realAmount}}</text>
+    </view>
+    <view class='list_left'>
+      <text class='text_30rpx color_F60 font_weiget_blod'>￥{{realAmount}}</text>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='list_left'>
+      <text>订单手机号</text>
+    </view>
+    <view class='list_left'>
+     123
+    </view>
+  </view>
+  <view class='scan_QR_box'>
+  <image class='scan_QR_box_img' src="{{info.img}}" data-src="{{info.img}}" bindtap='review_img'>
+          </image>
+  </view>
+</view>
+<view  wx:if="{{!info.payStatus}}" class='bottom_box background_F60 ' bindtap='pay'>
+    <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{realAmount}} 立即支付 </text>
+</view>
+<view  wx:if="{{!info.payStatus}}" class='bottom_box background_F60 ' bindtap='pay'>
+    <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{realAmount}} 获取验证码 </text>
+</view>
