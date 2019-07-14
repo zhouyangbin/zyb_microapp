@@ -6,21 +6,26 @@
 </view>
 <view  class='order_card_info'>
         <view  class='card_info1'>
-          <text class='card_info1_text1'>订单编号</text>
+          <text class='card_info1_text1'>订单编号:</text>
           <text class='card_info1_text2'>{{item.orderNo}}</text>
         </view>
         <view  class='card_info1'>
-          <text class='card_info1_text1'>订单时间</text>
-          <text class='card_info1_text2'>{{item.title}}</text>
+          <text class='card_info1_text1'>订单时间:</text>
+          <text class='card_info1_text2'>{{item.createTime}}</text>
         </view>
 
         <view  class='card_info1'>
-          <text class='card_info1_text1'>订单总价</text>
-          <text class='card_info1_text2'>{{item.createTime}}</text>
+          <text class='card_info1_text1'>订单总价:</text>
+          <text class='card_info1_text2'>￥{{item.realAmount}}</text>
         </view>
         <view  class='card_info1'>
-          <text class='card_info1_text1'>订单状态</text>
-          <text class='card_info1_text2'>{{item.payTime}}</text>
+          <text class='card_info1_text1'>订单状态:</text>
+          <text class='card_info1_text2'>
+            <block wx:if="{{item.consumeStatus == 1}}">已消费</block>
+            <block wx:elif="{{item.payStatus == 1}}">未消费</block>
+            <block wx:elif="{{item.status == 3}}">已取消</block>
+            <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}"><button type="primary" size='mini'> 去支付 </button></block>
+          </text>
         </view>
         <view class="textarea text_26rpx">
           <textarea placeholder="请输入订单备注" placeholder-style="color:#000;"  />
@@ -29,7 +34,7 @@
 <view class='pro_box'>
     <view class='pro_box_content'>
         <view class='pro_box_img_box'>
-          <image class='pro_box_img_box_img' src="../../static/images/user.png">
+          <image class='pro_box_img_box_img' src="{{item.img}}">
           </image>
         </view>
         <view  class='pro_box_info'>
@@ -42,6 +47,6 @@
     </view>
 </view>
 <view class='bottom_box background_F60'>
-    <text class='text_36rpx color_Ffff font_weiget_blod'>核销 </text>
+    <text class='text_36rpx color_Ffff font_weiget_blod' bindtap='check'>核销 </text>
 </view>
       

@@ -30,7 +30,7 @@
       {{info.cellPhone}}
     </view>
   </view>
-  <block wx:if="{{info.payStatus==true}}">
+  <block wx:if="{{info.payStatus==true && info.qrcode != null}}">
   <view class='scan_QR_box'>
     <image class='scan_QR_box_img' src="{{info.qrcode}}" data-src="{{info.qrcode}}" bindtap='review_img'>
     </image>

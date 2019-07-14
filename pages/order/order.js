@@ -44,7 +44,6 @@ Page({
     if (that.data.tab_index == 3) {
       sendData.payStatus = 0
     }
-    console.log(user)
     wx.request({//index  product list
       url: wxConfig.base_url + "/mini-order/orders",
       data: sendData,
@@ -87,7 +86,6 @@ Page({
     })
   },
   scroll_bottom(){
-    console.log(123);
     if (this.data.total > this.data.orderArray.length) {
       this.setData({
         page: this.data.page + 1,

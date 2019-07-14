@@ -8,15 +8,13 @@ Component({
       type: Number,
     },
   },
-  attached() {
-  },
-  data: {
-  },
+  attached() {},
+  data: {},
   methods: {
-    order_completed(event){
+    order_completed(event) {
       console.log(event.currentTarget.dataset.item.orderId);
       return;
-      wx.request({//index  product list
+      wx.request({ //index  product list
         url: wxConfig.base_url + "/mini-order/orders",
         data: sendData,
         method: 'GET',
@@ -47,20 +45,20 @@ Component({
           wx.hideNavigationBarLoading() //完成停止加载
           wx.stopPullDownRefresh();
         },
-        fail: function (err) {
+        fail: function(err) {
           wx.showToast({
             title: "444",
             icon: 'success',
             duration: 2000
           })
-        },//请求失败
+        }, //请求失败
       })
-      
+
     },
     detail(event) {
       console.log(event.currentTarget.dataset.item.orderId);
       wx.navigateTo({
-        url: '../order_detail/order_detail?orderId=' +                                     event.currentTarget.dataset.item.orderId
+        url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
       })
     }
   }
