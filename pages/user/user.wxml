@@ -16,7 +16,7 @@
 <view class='list'>
   <view>
     <image class='list_img' src='../../static/images/user_serach.png'></image>
-    <text>手机号查票</text>
+    <text bindtap='phonenumber_order'>手机号查票</text>
   </view>
   <view class='arrow'></view>
 </view>

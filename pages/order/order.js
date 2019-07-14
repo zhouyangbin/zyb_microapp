@@ -70,7 +70,7 @@ Page({
       },
       fail: function (err) {
         wx.showToast({
-          title: "444",
+          title: "获取失败",
           icon: 'success',
           duration: 2000
         })

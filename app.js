@@ -1,5 +1,6 @@
 //app.js
 var wxConfig = require('./wxConfig.js');
+console.log(wxConfig)
 App({
   onLaunch: function () {
     // 展示本地存储能力

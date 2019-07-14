@@ -4,7 +4,8 @@
     "pages/user/user",
     "pages/order/order",
     "pages/detail/detail",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/check_order/check_order"
   ],
   "window": {
     "backgroundTextStyle": "light",
