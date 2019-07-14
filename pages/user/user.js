@@ -58,6 +58,11 @@ Page({
       }
     })
   },
+  phonenumber_order(){
+    wx.navigateTo({
+      url: '../check_order/check_order',
+    })
+  },
   getPhoneNumber(e) {
     var user = wx.getStorageSync('user');   
     wx.request({
