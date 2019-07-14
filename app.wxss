@@ -31,3 +31,6 @@ body{
 .background_F60{
   background:#F60;
 }
+.line_height{
+  line-height: 60rpx;
+}

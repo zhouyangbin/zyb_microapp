@@ -6,8 +6,8 @@
     "pages/detail/detail",
     "pages/auth/auth",
     "pages/check_order/check_order",
-    "pages/order_detail/order_detail"
-
+    "pages/order_detail/order_detail",
+    "pages/QR_check_order/QR_check_order"
   ],
   "window": {
     "backgroundTextStyle": "light",

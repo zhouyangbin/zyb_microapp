@@ -50,10 +50,9 @@ Page({
     wx.scanCode({
       success: (res) => {
         var result = res.result;
-
-        _this.setData({
-          result: result,
-
+        console.log(result);
+        wx.navigateTo({
+          url: "../QR_check_order/QR_check_order?key_word=" + 123,
         })
       }
     })

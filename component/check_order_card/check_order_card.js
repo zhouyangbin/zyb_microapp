@@ -56,6 +56,12 @@ Component({
         },//请求失败
       })
       
+    },
+    detail(event) {
+      console.log(event.currentTarget.dataset.item.orderId);
+      wx.navigateTo({
+        url: '../order_detail/order_detail?orderId=' +                                     event.currentTarget.dataset.item.orderId
+      })
     }
   }
 })

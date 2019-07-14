@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "券码验票",
+  "usingComponents": {
+    "Order_card": "/component/check_order_card/check_order_card"
+  }
+}

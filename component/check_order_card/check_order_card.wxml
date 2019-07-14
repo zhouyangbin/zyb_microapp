@@ -1,22 +1,22 @@
-  <view class='order_card_box' wx:for="{{orderList}}" data-index="{{index}}" wx:key='{{index}}'>
+  <view class='order_card_box' bindtap='detail' data-item='{{item}}' wx:for="{{orderList}}" data-index="{{index}}" wx:key='{{index}}'>
       <view  class='order_card_info'>
-      <view  class='card_info1'>
+        <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>消费项目</text>
           <text class='card_info1_text2'>{{item.title}}</text>
         </view>
-        <view  class='card_info1'>
+        <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>订单编号</text>
           <text class='card_info1_text2'>{{item.orderNo}}</text>
         </view>
-        <view  class='card_info1'>
+        <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>购买时间</text>
           <text class='card_info1_text2'>{{item.createTime}}</text>
         </view>
-        <view  class='card_info1'>
+        <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>消费状态</text>
           <text class='card_info1_text2'>未消费</text>
         </view>
-        <view  class='card_info3'>
+        <view  class='card_info3 line_height'>
           <view class='card_info3_text1'>
             <text class='card_info3_text1_1'>￥</text>
             <text class='card_info3_text1_2'>{{item.realAmount}} </text>
