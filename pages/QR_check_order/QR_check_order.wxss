@@ -1,0 +1,119 @@
+.check_order-box {
+  width: 700rpx;
+  padding: 20rpx 30rpx;
+  border-bottom: 2rpx solid #e2e2e2;
+}
+.check_order-content {
+  background: white;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+}
+.check_btn-text{
+  min-height: 80rpx;
+}
+.check_order-text {
+  flex: 8;
+  margin-left: 20rpx;
+  background: #f5f4f4;
+  border: 2rpx solid #f0efef;
+  border-radius: 30px;
+  font-size: 26rpx;
+  padding-left: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.order_card_info{
+  width:670rpx;
+  margin:20rpxx 0 0 40rpx;
+  box-shadow:0px 2px 2px 2px rgb(243, 243, 243);
+  padding:20rpx 40rpx;
+}
+.card_info1{
+  display: flex;
+  align-items: center;
+  line-height: 60rpx;
+}
+.card_info1_text1{
+  color: #000;
+  font-weight:500;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+}
+.card_info1_text2{
+  color: rgb(141, 140, 140);
+  font-size: 26rpx;
+}
+.card_info2_text1{
+  color: rgb(177, 177, 177);
+  font-size: 26rpx;
+}
+.textarea{
+  width: 100%;
+  background: #ddd;
+  margin: 20rpx 0;
+}
+.pro_box{
+  width:670rpx;
+  margin:20rpxx 0 0 40rpx;
+  padding:20rpx 40rpx;
+  border-radius:10rpx;
+  height:auto;
+  display:block;
+  background:#fff;
+  margin-bottom: 30rpx;
+}
+.pro_box_content {
+  width: 630rpx;
+  display: flex;
+  background: #fff;
+}
+.pro_box_img_box{
+  width: 150rpx;
+  height: 150rpx;
+  overflow: hidden;
+}
+.pro_box_img_box_img{
+  width: 140rpx;
+  height:140rpx;
+  border-radius: 20rpx;
+}
+.pro_box_info{
+  width: 450rpx;
+  padding-left: 20rpx;
+  display: flex;
+  align-items:center;
+}
+.pro_box_info1{
+  width: 300rpx;
+}
+.pro_box_info1_name{
+  color: #000;
+  font-weight:500;
+  font-size: 30rpx;
+}
+.pro_box_info1_desc{
+  color: rgb(141, 140, 140);
+  font-size: 26rpx;
+}
+.pro_box_info1_price{
+  color: #000;
+  font-size: 26rpx;
+}
+.bottom_box{
+  width: 690rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  position: fixed;
+  bottom: 10rpx;
+  border-radius:10rpx;
+  margin-left:30rpx;
+}

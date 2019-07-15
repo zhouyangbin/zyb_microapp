@@ -3,7 +3,11 @@
     "pages/index/index",
     "pages/user/user",
     "pages/order/order",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/auth/auth",
+    "pages/check_order/check_order",
+    "pages/order_detail/order_detail",
+    "pages/QR_check_order/QR_check_order"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,9 +19,7 @@
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#F60",
-    "backgroundColor": "red",
-    "position": "bottom",
+    "selectedColor": "#E54847",
     "list": [
       {
         "pagePath": "pages/index/index",

@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 const wxConfig = require('../../wxConfig.js')
+
 Page({
   data: {
     motto: 'Hello World',
@@ -39,7 +40,8 @@ Page({
           })
         }
       })
-    }
+    };
+    this.checkScan();
   },
   onShow(){
     console.log(app.globalData.userInfo)
@@ -50,12 +52,16 @@ Page({
     wx.scanCode({
       success: (res) => {
         var result = res.result;
-
-        _this.setData({
-          result: result,
-
+        console.log(result);
+        wx.navigateTo({
+          url: "../QR_check_order/QR_check_order?key_word=" + 123,
         })
       }
+    })
+  },
+  phonenumber_order(){
+    wx.navigateTo({
+      url: '../check_order/check_order',
     })
   },
   getPhoneNumber(e) {
@@ -82,5 +88,29 @@ Page({
         }
       },
     });
+  },
+  // 检查是否是扫码人员
+  checkScan(e) {
+    var user = wx.getStorageSync('user');
+    console.log(user);
+    var that = this;
+    wx.request({
+      url: wxConfig.base_url+'/mini-scan/check-scan',
+      method: 'POST',
+      data: {
+        openid: user.openid,
+        cellPhone: user.phoneNumber,
+      },
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success:function(res){
+        if(res.data.code != 0) {
+          that.setData({
+            hidden: true
+          })
+        }
+      },fail:function(err){
+
+      }
+    })
   }
 })

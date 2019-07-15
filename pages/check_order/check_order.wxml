@@ -1,0 +1,9 @@
+<view class='check_order-box'>
+  <view class='check_order-content'>
+   <input class='check_order-text'placeholder="请输入手机号"name="phone" type="number" maxlength="11"  bindinput="bindKeyInput" value="{{inputValue}}" bindfocus="activeFocus" />
+    <text class='check_btn-text' bindtap='check_phone_order'>{{currentText}}</text>
+  </view>
+</view>
+<scroll-view scroll-y  style="height:{{height+'px'}}"  class="container" >
+    <Order_card height="{{height}}"  orderList='{{orderArray}}'></Order_card>
+</scroll-view>

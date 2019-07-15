@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "订单查询",
+  "usingComponents": {
+    "Order_card": "/component/check_order_card/check_order_card"
+  }
+}

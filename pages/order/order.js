@@ -1,7 +1,8 @@
-const wxConfig = require('../../wxConfig.js')
+const wxConfig = require('../../wxConfig.js');
+var util = require('../../utils/util.js');
 Page({
   data: {
-    tab_index: '1',
+    tab_index: '5',
     hidden: false,
     height: wx.getSystemInfoSync().windowHeight - 50,
     orderArray: [],
@@ -43,14 +44,24 @@ Page({
     if (that.data.tab_index == 3) {
       sendData.payStatus = 0
     }
-    console.log(user)
     wx.request({//index  product list
       url: wxConfig.base_url + "/mini-order/orders",
       data: sendData,
       method: 'GET',
       header: {'content-type': 'application/json'},
       success(res) {
-        console.log(res.data.data);
+        for(var i in res.data.data) {
+          let date = util.formatTime(new Date(res.data.data[i].createTime));
+         
+          // date = date.replace(new RegExp('/', 'g'), '/');
+          
+          // date = date ? new Date(date) : new Date();
+          // const year = date.getFullYear();
+          // const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          // const day = date.getDate().toString().padStart(2, '0');
+  
+          res.data.data[i].createTime = date;
+        }
         if (res.data.data) {
           that.setData({
             hidden: true,
@@ -67,7 +78,7 @@ Page({
       },
       fail: function (err) {
         wx.showToast({
-          title: "444",
+          title: "获取失败",
           icon: 'success',
           duration: 2000
         })
@@ -75,7 +86,6 @@ Page({
     })
   },
   scroll_bottom(){
-    console.log(123);
     if (this.data.total > this.data.orderArray.length) {
       this.setData({
         page: this.data.page + 1,

@@ -49,6 +49,9 @@
   font-size: 26rpx;
 }
 .card_info3_text2{
-  color: rgb(141, 140, 140);
+  color: #fff;
   font-size: 26rpx;
+  border-radius:10rpx;
+  background: #F60;
+  padding: 4rpx 10rpx;
 }
