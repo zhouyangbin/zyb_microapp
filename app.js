@@ -1,6 +1,5 @@
 //app.js
 var wxConfig = require('./wxConfig.js');
-console.log(wxConfig)
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -19,9 +18,9 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        wx.reLaunch({
-          url: '/pages/auth/auth',
-        })
+        // wx.reLaunch({
+        //   url: '/pages/auth/auth',
+        // })
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
@@ -65,11 +64,13 @@ App({
         if (res.statusCode == 200){
           obj.openid = res.data.openid;
           obj.session_key = res.data.session_key;
+          if (res.data.unionid != undefined) {
+              obj.unionid = res.data.unionid;
+          }
           if(res.data.phoneNumber != undefined) {
             obj.phoneNumber = res.data.phoneNumber;
           }
           obj.expires_in = Date.now() + 7200;
-          // console.log(obj, "////");
           wx.setStorageSync('user', obj);//存储openid
         }else{
           wx.showToast({

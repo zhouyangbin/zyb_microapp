@@ -1,55 +1,67 @@
-
 const app = getApp()
 const wxConfig = require('../../wxConfig.js');
 Page({
   data: {
     currentText: '查询',
     inputValue: '',
+    isFromSearch: true, // 用于判断searchSongList数组是不是空数组，默认true，空的数组 
     page: 1,
-    limit: 100,
+    limit: 5,
     orderArray: [],
     height: wx.getSystemInfoSync().windowHeight - 50,
+    searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+    searchLoadingComplete: false //“没有数据”的变量，默认false，隐藏
   },
-  onLoad: function () {
-    
+  onLoad: function() {
+
   },
-  onShow() {
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+
   },
-  bindKeyInput: function (e) {
+  onShow() {},
+  bindKeyInput: function(e) {
     this.setData({
       inputValue: e.detail.value,
     })
   },
-  check_phone_order(e) {
+  fetchSearchList: function() {
     let that = this;
     let user = wx.getStorageSync('user');
     let sendData = null;
     sendData = {
       openid: user.openid,
-      cellphone: this.data.inputValue,
+      cellPhone: this.data.inputValue,
+      scanPhone: user.phoneNumber,
+      page: that.data.page,
       limit: that.data.limit,
       payStatus: '0'
     };
-    wx.request({//index  product list
-      url: wxConfig.base_url + "/mini-order/orders",
+    wx.request({
+      url: wxConfig.base_url + "/mini-scan/orders",
       data: sendData,
-      method: 'GET',
+      method: 'POST',
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success(res) {
-        // console.log(res.data);
-        if (res.data.data) {
+        if (res.data.data.length != 0) {
+          let searchList = [];
+          //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
+          that.data.isFromSearch ? searchList = res.data.data : searchList = that.data.orderArray.concat(res.data.data);
           that.setData({
-            hidden: true,
-            orderArray: res.data.data,
-            total: res.data.count
+            orderArray: searchList, // 获取数据数组
+            searchLoading: true
           });
         } else {
           that.setData({
             hidden: true,
             listArray: [],
             total: res.data.count,
+            searchLoadingComplete: true,
+            searchLoading: false
           }, () => {
             wx.showToast({
               title: "没有数据",
@@ -58,16 +70,38 @@ Page({
             })
           });
         }
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh();
-      },
-      fail: function (err) {
-        wx.showToast({
-          title: "444",
-          icon: 'success',
-          duration: 2000
-        })
-      },//请求失败
+      }
     })
+  },
+  keywordSearch: function() {
+    if (this.data.inputValue == '') {
+      wx.showToast({
+        title: '请输入查询信息',
+        icon: 'warn',
+        duration: 2000
+      })
+      this.setData({
+        orderArray: []
+      });
+      return;
+    }
+    this.setData({
+      page: 1,
+      orderArray: [],
+      isFromSearch: true,
+      searchLoading: true,
+      searchLoadingComplete: false
+    })
+    this.fetchSearchList();
+  },
+  searchScrollLower: function() {
+    let that = this;
+    if (that.data.searchLoading && !that.data.searchLoadingComplete) {
+      that.setData({
+        page: that.data.page + 1, //每次触发上拉事件，把searchPageNum+1  
+        isFromSearch: false //触发到上拉事件，把isFromSearch设为为false  
+      });
+      that.fetchSearchList();
+    }
   },
 })

@@ -10,7 +10,12 @@ Page({
     limit:4,
     total:null
   },
-  onLoad: function () {
+  onLoad: function (e) {
+    if(e.tab_index != undefined) {
+      this.setData({
+        tab_index: e.tab_index
+      });
+    }
     this.get_order();
   },
   onShow: function () {

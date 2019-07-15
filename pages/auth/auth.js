@@ -11,13 +11,14 @@ Page({
         wx.getUserInfo({
           success: function(res){
             console.log(res.userInfo);
-            console.log(res.rawData);
+            console.log(res.rawData);          
             wx.request({
               url: wxConfig.base_url+'/mini-user/users',
               method: 'POST',
               data: {
                 'openid': user.openid,
                 'nickName': res.userInfo.nickName,
+                'unionid': user.unionid,
                 'avatarUrl': res.userInfo.avatarUrl,
                 'gender': res.userInfo.gender,
                 'country': res.userInfo.country,

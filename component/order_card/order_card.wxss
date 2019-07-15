@@ -2,53 +2,90 @@
   width: 100%;
   display: flex;
 }
-.order_card_info{
+
+.order_card_info {
   width: 620rpx;
   margin: 40rpx 0 0 40rpx;
   padding: 25rpx;
-  box-shadow:0px 2px 2px 2px rgb(243, 243, 243);
+  box-shadow: 0px 2px 2px 2px rgb(243, 243, 243);
 }
-.card_info1{
+
+.card_info1 {
   display: flex;
   align-items: center;
   line-height: 60rpx;
 }
-.card_info1_text1{
+
+.card_info1_text1 {
   color: #000;
-  font-weight:500;
+  font-weight: 500;
   font-size: 26rpx;
   margin-right: 30rpx;
 }
-.card_info1_text2{
+
+.card_info1_text2 {
   color: rgb(141, 140, 140);
   font-size: 26rpx;
 }
-.card_info2_text1{
+
+.card_info2_text1 {
   color: rgb(177, 177, 177);
   font-size: 26rpx;
 }
-.card_info3{
+
+.card_info3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.card_info3_text1{
-  color: #F60;
+
+.card_info3_text1 {
+  color: #f60;
 }
-.card_info3_text1_1{
+
+.card_info3_text1_1 {
   font-size: 20rpx;
 }
-.card_info3_text1_2{
+
+.card_info3_text1_2 {
   font-size: 26rpx;
 }
-.card_info3_text1_3{
+
+.card_info3_text1_3 {
   color: rgb(141, 140, 140);
   font-size: 30rpx;
 }
-.card_info3_text1_3_1{
+
+.card_info3_text1_3_1 {
   font-size: 26rpx;
 }
-.card_info3_text2{
+
+.card_info3_text2 {
   color: rgb(141, 140, 140);
   font-size: 26rpx;
+}
+
+.order_empty {
+  height: 250px;
+  padding-top: 3.2rem;
+  padding-bottom: 1.6rem;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.order_empty .bg {
+  position: absolute;
+  width: 16.29333rem;
+  height: 6.73333rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-size: 100%;
+  top: 0;
+}
+
+.order_empty .bg .img{
+  width: 160px;
+  height: 120px;
 }

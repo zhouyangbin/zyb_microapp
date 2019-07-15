@@ -15,7 +15,6 @@ Component({
   },
   methods: {
     detail(event){
-      console.log(event.currentTarget.dataset.item.productId);
       wx.navigateTo({
         url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
       })

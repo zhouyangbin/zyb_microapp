@@ -1,4 +1,4 @@
-  <view class='order_card_box' bindtap='detail' data-item='{{item}}' wx:for="{{orderList}}" data-index="{{index}}" wx:key='{{index}}'>
+  <view class='order_card_box' bindtap='qrorder' data-item='{{item}}' wx:for="{{orderList}}" data-index="{{index}}" wx:key='{{index}}'>
       <view  class='order_card_info'>
         <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>消费项目</text>
@@ -14,14 +14,19 @@
         </view>
         <view  class='card_info1 line_height'>
           <text class='card_info1_text1'>消费状态</text>
-          <text class='card_info1_text2'>未消费</text>
+          <text class='card_info1_text2'>
+            <block wx:if="{{item.consumeStatus == 1}}">已消费</block>
+            <block wx:elif="{{item.payStatus == 1}}">未消费</block>
+            <block wx:elif="{{item.status == 3}}">已取消</block>
+            <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}">未支付</block>
+          </text>
         </view>
         <view  class='card_info3 line_height'>
           <view class='card_info3_text1'>
             <text class='card_info3_text1_1'>￥</text>
             <text class='card_info3_text1_2'>{{item.realAmount}} </text>
           </view>
-          <view class='card_info3_text2' bindtap='order_completed'  data-item='{{item}}'>
+          <view class='card_info3_text2' bindtap='qrorder'  data-item='{{item}}'>
             确认消费
           </view>
         </view>

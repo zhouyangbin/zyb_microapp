@@ -46,7 +46,7 @@
         </view>
     </view>
 </view>
-<view class='bottom_box background_F60'>
-    <text class='text_36rpx color_Ffff font_weiget_blod' bindtap='check'>核销 </text>
+<view class='bottom_box background_F60' bindtap='check'>
+    <text class='text_36rpx color_Ffff font_weiget_blod'>核销 </text>
 </view>
       

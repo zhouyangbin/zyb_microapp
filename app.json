@@ -7,7 +7,8 @@
     "pages/auth/auth",
     "pages/check_order/check_order",
     "pages/order_detail/order_detail",
-    "pages/QR_check_order/QR_check_order"
+    "pages/QR_check_order/QR_check_order",
+    "pages/mine/mine"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,7 +35,7 @@
         "selectedIconPath": "static/tabs/orders-active.png"
       },
       {
-        "pagePath": "pages/user/user",
+        "pagePath": "pages/mine/mine",
         "text": "个人中心",
         "iconPath": "static/tabs/user.png",
         "selectedIconPath": "static/tabs/user-active.png"

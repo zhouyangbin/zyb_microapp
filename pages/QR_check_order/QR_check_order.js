@@ -1,13 +1,14 @@
 const app = getApp()
 const wxConfig = require('../../wxConfig.js');
-const util = require('../../utils/util.js')
+const util = require('../../utils/util.js');
+let user = wx.getStorageSync('user');
 Page({
   data: {
     currentText: '查询',
     inputValue: '',
     order: [],
     page: 1,
-    limit: 100,
+    limit: 5,
   },
   onLoad: function(e) {
     console.log(e);
@@ -80,8 +81,7 @@ Page({
   },
   // 订单详情
   details(e) {
-    var that = this;
-    let user = wx.getStorageSync('user');
+    var that = this;    
     wx.request({
       url: wxConfig.base_url + '/mini-order/details',
       data: {
@@ -100,7 +100,49 @@ Page({
     })
   },
   // 核销
-  check(e) {
-    
+  check(e) {    
+    if(this.data.item.orderNo != undefined) {
+      wx.request({
+        url: wxConfig.base_url+'/mini-scan/scan',
+        method: 'POST',
+        header:{'content-type': 'application/x-www-form-urlencoded'},                                 
+        data: {
+          openid: user.openid,
+          orderNo: this.data.item.orderNo,
+          cellPhone: user.phoneNumber
+        },
+        success(res){
+          console.log(res);
+          if(res.data.code == 0) {
+            wx.showModal({
+              title: '验票',
+              content: '验票成功',
+              success(r){
+                if (r.confirm) {
+                  wx.redirectTo({
+                    url: '../check_order/check_order',
+                  })
+                }
+              }
+            })
+          }else {
+            wx.showModal({
+              title: '验票',
+              content: res.data.msg,
+              success(r) {
+                if (r.confirm) {
+                  wx.redirectTo({
+                    url: '../check_order/check_order',
+                  })
+                }
+              }
+            })
+          }
+        },
+        fail(err){
+
+        }
+      })
+    }
   }
 })
