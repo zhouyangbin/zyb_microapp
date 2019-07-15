@@ -152,9 +152,8 @@ Page({
               signType: pay.data.signType,
               paySign: pay.data.paySign,
               success(res) {
-                console.log(res);
                 wx.navigateTo({
-                  url: "../paySuccess/paySuccess?payId=" + 123,
+                  url: "../paySuccess/paySuccess?order_id=" + pay.data.orderId,
                 })
               },
               fail(res) {

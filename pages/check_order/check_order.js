@@ -1,5 +1,6 @@
 const app = getApp()
 const wxConfig = require('../../wxConfig.js');
+var util = require('../../utils/util.js');
 Page({
   data: {
     currentText: '查询',
@@ -51,6 +52,11 @@ Page({
           let searchList = [];
           //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
           that.data.isFromSearch ? searchList = res.data.data : searchList = that.data.orderArray.concat(res.data.data);
+          // 时间格式转换
+          for (var i in searchList) {
+            let date = new Date(new Date(searchList[i].createTime));
+            searchList[i].createTime = util.formatToYMD(date);
+          }
           that.setData({
             orderArray: searchList, // 获取数据数组
             searchLoading: true

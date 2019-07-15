@@ -16,7 +16,8 @@ Page({
   },
   onLoad: function(e) {
     this.setData({
-      payId: e.payId,
+      openid: user.openid,
+      orderId: e.order_id
     }, () => {
       this.get_pay_detail();
     })
@@ -24,23 +25,20 @@ Page({
   // 获取支付详情
   get_pay_detail() {
     let that = this;
-    let sendData = null;
-    sendData = {
-      id: that.data.payId,
-    };
     wx.request({
-      url: wxConfig.base_url + "/mini-product/products/id",
-      data: sendData,
+      url: wxConfig.base_url + "/mini-order/details",
+      data: {
+        openid: user.openid,
+        orderId: that.data.orderId
+      },
       method: 'GET',
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/json' 
       },
       success(res) {
         if (res.data.data) {
           that.setData({
             info: res.data.data,
-            payableAmount: res.data.data.price,
-            realAmount: res.data.data.price
           });
         }
       },
