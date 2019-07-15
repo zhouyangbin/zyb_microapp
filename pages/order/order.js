@@ -10,11 +10,28 @@ Page({
     limit:4,
     total:null
   },
-  onLoad: function () {
-    this.get_order();
+  onLoad: function (e) {
+    // if (e.tab_index){
+    //   this.setData({
+    //     tab_index: e.tab_index
+    //   },()=>{
+    //     this.get_order();
+    //   })
+    // }else{
+    //   this.get_order();
+    // }
   },
-  onShow: function () {
-    
+  onShow: function (e) {
+    console.log(e)
+    if (e) {
+      this.setData({
+        tab_index: e.tab_index
+      }, () => {
+        this.get_order();
+      })
+    } else {
+      this.get_order();
+    }
   },
   tabClick: function (e) {
     this.setData({

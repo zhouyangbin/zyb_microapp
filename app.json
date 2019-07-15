@@ -7,7 +7,8 @@
     "pages/auth/auth",
     "pages/check_order/check_order",
     "pages/order_detail/order_detail",
-    "pages/QR_check_order/QR_check_order"
+    "pages/QR_check_order/QR_check_order",
+    "pages/paySuccess/paySuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

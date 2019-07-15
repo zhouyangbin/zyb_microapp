@@ -19,18 +19,27 @@ body{
 .font_weiget_blod{
   font-weight: bold;
 }
+.color_000{
+  color:#000;
+}
 .color_F60{
   color:#F60;
 }
 .color_Ffff{
   color:#fff;
 }
-.color_Ffff{
-  color:#fff;
+.color_b1b1b1{
+  color:#b1b1b1;
 }
 .background_F60{
   background:#F60;
 }
-.line_height{
+.line_height_40{
+  line-height: 40rpx;
+}
+.line_height_60{
   line-height: 60rpx;
+}
+.box_shadow_2_2_2_243{
+  box-shadow:0px 2px 2px 2px rgb(243, 243, 243);
 }
