@@ -55,6 +55,7 @@ Page({
             hidden: true
           }, () => {
             app.getLocation(that);
+            // this.getAddress()
           })
         }
       })

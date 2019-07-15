@@ -8,7 +8,8 @@
     "pages/check_order/check_order",
     "pages/order_detail/order_detail",
     "pages/QR_check_order/QR_check_order",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/paySuccess/paySuccess"
   ],
   "window": {
     "backgroundTextStyle": "light",

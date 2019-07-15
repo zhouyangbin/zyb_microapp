@@ -116,6 +116,7 @@ Page({
     // console.log(this.data.info);
     // console.log(this.data.info.price * this.data.total);
     // console.log(this.data.phoneNumber);
+    
     if(this.data.phoneNumber == '') {
       wx.showToast({
         title: '获取手机号失败',
@@ -152,6 +153,9 @@ Page({
               paySign: pay.data.paySign,
               success(res) {
                 console.log(res);
+                wx.navigateTo({
+                  url: "../paySuccess/paySuccess?payId=" + 123,
+                })
               },
               fail(res) {
                 console.log(res);

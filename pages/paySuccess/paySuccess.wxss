@@ -1,0 +1,52 @@
+page{
+  background-color: rgb(240, 239, 239);
+}
+.pay_head_box{
+  width:690rpx;
+  height:auto;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background:#fff;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+.pay_head_box_img_img{
+  width: 80rpx;
+  height:80rpx;
+  border-radius: 20rpx;
+}
+.pay_head_box_info{
+  padding-left: 20rpx;
+}
+.pay_info_box{
+  width:690rpx;
+  height:auto;
+  background:#fff;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+.pay_info_box_img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30rpx 0;
+  padding: 20rpx 0;
+}
+.pay_info_box_img_img{
+  width: 400rpx;
+  height: 400rpx;
+}
+.swiper_box {
+  width: 100%;
+  position: relative;
+  background: #f0f0f0;
+}
+.swiper_box_img {
+  width: 100%;
+  height: inherit;
+}
+
+
+
+
