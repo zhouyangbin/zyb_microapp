@@ -138,30 +138,37 @@ Page({
       },
       header: { 'content-type': 'application/x-www-form-urlencoded' },
       success: function (e) {
-        wx.request({
-          url: e.data.data.redirect_url,
-          data: {
-            openId: user.openid
-          },
-          header: { 'content-type': 'application/x-www-form-urlencoded' },
-          success: function (pay) {
-            wx.requestPayment({
-              timeStamp: pay.data.timeStamp,
-              nonceStr: pay.data.nonceStr,
-              package:  pay.data.package,
-              signType: pay.data.signType,
-              paySign: pay.data.paySign,
-              success(res) {
-                wx.navigateTo({
-                  url: "../paySuccess/paySuccess?order_id=" + pay.data.orderId,
-                })
-              },
-              fail(res) {
-                console.log(res);
-              }
+        // 创建支付订单失败
+        if(e.data.code != 0) {
+            wx.showToast({
+              title: e.data.msg,
             })
-          }
-        })
+        }else {
+          wx.request({
+            url: e.data.data.redirect_url,
+            data: {
+              openId: user.openid
+            },
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
+            success: function (pay) {
+              wx.requestPayment({
+                timeStamp: pay.data.timeStamp,
+                nonceStr: pay.data.nonceStr,
+                package: pay.data.package,
+                signType: pay.data.signType,
+                paySign: pay.data.paySign,
+                success(res) {
+                  wx.navigateTo({
+                    url: "../paySuccess/paySuccess?order_id=" + pay.data.orderId,
+                  })
+                },
+                fail(res) {
+                  console.log(res);
+                }
+              })
+            }
+          })
+        }
       }
     })
   },
@@ -181,7 +188,7 @@ Page({
         iv: e.detail.iv,
       },
       success: function(res) {
-        if (res.statusCode == 200 && res.data.code == 0) {
+        if (res.statusCode == 200 && res.data.code == 0 && res.data.data != undefined) {
           that.setData({
             phoneNumber: res.data.data.phoneNumber
           });

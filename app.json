@@ -9,7 +9,12 @@
     "pages/order_detail/order_detail",
     "pages/QR_check_order/QR_check_order",
     "pages/mine/mine",
-    "pages/paySuccess/paySuccess"
+    "pages/paySuccess/paySuccess",        
+    "component/index_card/index_card",
+    "component/check_order_card/check_order_card",
+    "component/order_card/order_card",
+    "component/search/search",
+    "component/select/select"    
   ],
   "window": {
     "backgroundTextStyle": "light",

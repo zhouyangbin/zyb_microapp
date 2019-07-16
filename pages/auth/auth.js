@@ -11,21 +11,24 @@ Page({
         wx.getUserInfo({
           success: function(res){
             console.log(res.userInfo);
-            console.log(res.rawData);          
+            console.log(res.rawData);
+            var data = {
+              'openid': user.openid,
+              'nickName': res.userInfo.nickName,              
+              'avatarUrl': res.userInfo.avatarUrl,
+              'gender': res.userInfo.gender,
+              'country': res.userInfo.country,
+              'province': res.userInfo.province,
+              'city': res.userInfo.city,
+              'language': res.userInfo.language
+            };        
+            if(user.unionid != undefined) {
+              data.unionid = user.unionid;
+            }; 
             wx.request({
               url: wxConfig.base_url+'/mini-user/users',
               method: 'POST',
-              data: {
-                'openid': user.openid,
-                'nickName': res.userInfo.nickName,
-                'unionid': user.unionid,
-                'avatarUrl': res.userInfo.avatarUrl,
-                'gender': res.userInfo.gender,
-                'country': res.userInfo.country,
-                'province': res.userInfo.province,
-                'city': res.userInfo.city,
-                'language': res.userInfo.language
-              },
+              data: data,
               header: { 'content-type': 'application/x-www-form-urlencoded' },
               success: function (res) {   
                 
