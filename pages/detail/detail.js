@@ -163,7 +163,9 @@ Page({
                   })
                 },
                 fail(res) {
-                  console.log(res);
+                  wx.navigateTo({
+                    url: "../order/order?tab_index=3",
+                  })
                 }
               })
             }

@@ -19,7 +19,7 @@ Page({
     this.get_order();
   },
   onShow: function (e) {
-    console.log(e)
+    // console.log(e)
     // if (e) {
     //   this.setData({
     //     tab_index: e.tab_index

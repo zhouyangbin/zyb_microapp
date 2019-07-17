@@ -37,10 +37,14 @@ Component({
             signType: pay.data.signType,
             paySign: pay.data.paySign,
             success(res) {
-              console.log(res);
+              wx.navigateTo({
+                url: "../paySuccess/paySuccess?order_id=" + pay.data.orderId,
+              })
             },
             fail(res) {
-              console.log(res);
+              wx.navigateTo({
+                url: "../order/order?tab_index=3",
+              })
             }
           })
         }
