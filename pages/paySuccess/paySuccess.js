@@ -4,15 +4,7 @@ var user = wx.getStorageSync('user');
 Page({
   data: {
     info: null,
-    "bnrUrl": [{
-      "url": "../../static/images/banner1.jpg"
-    }, {
-        "url": "../../static/images/banner2.jpg"
-    }, {
-        "url": "../../static/images/banner3.jpg"
-    }, {
-        "url": "../../static/images/banner4.jpg"
-    }]
+    adList: []
   },
   onLoad: function(e) {
     this.setData({
@@ -20,10 +12,11 @@ Page({
       orderId: e.order_id
     }, () => {
       this.get_pay_detail();
+      this.ad();
     })
   },
   // 获取支付详情
-  get_pay_detail() {
+  get_pay_detail: function() {
     let that = this;
     wx.request({
       url: wxConfig.base_url + "/mini-order/details",
@@ -33,7 +26,7 @@ Page({
       },
       method: 'GET',
       header: {
-        'content-type': 'application/json' 
+        'content-type': 'application/json'
       },
       success(res) {
         if (res.data.data) {
@@ -51,9 +44,36 @@ Page({
       }, //请求失败
     })
   },
-  my_order(){
+  my_order: function() {
     wx.switchTab({
       url: '../order/order',
     });
-  }
+  },
+  // 获取广告内容
+  ad: function() {
+    let that = this;
+    wx.request({
+      url: wxConfig.base_url + '/ad/adverts',
+      method: 'GET',
+      data: {
+        position: 2,
+        enabled: 1
+      },
+      success(res) {
+        if (res.data.code == 0) {
+          that.setData({
+            adList: res.data.data
+          })
+        }
+      },
+      fail(err) {
+
+      }
+    })
+  },
+  jump:function(e){
+    wx.redirectTo({
+      url: e.currentTarget.dataset.link,
+    })
+  },
 })

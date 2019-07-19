@@ -1,6 +1,7 @@
 var wxConfig = require('../../wxConfig.js')
 const app = getApp()
 var user = wx.getStorageSync('user');
+var util = require('../../utils/util.js');
 Page({
   data: {
     info: null,
@@ -31,7 +32,8 @@ Page({
       },
       success(res) {
         if (res.data.data) {
-          console.log(res.data.data)
+          let date = new Date(new Date(res.data.data.createTime));
+          res.data.data.createTime = util.formatTime(date);;
           that.setData({
             info: res.data.data
           })

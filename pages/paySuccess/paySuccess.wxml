@@ -16,8 +16,7 @@
   </view>
 </view>
 <swiper class='swiper_box' indicator-dots='true' autoplay='true' interval='5000' duration='1000'   circular='true'>
-    <swiper-item wx:for="{{bnrUrl}}">
-      <image src='{{item.url}}' class='swiper_box_img' mode='aspectFill'></image>
+    <swiper-item wx:for="{{adList}}">
+      <image src='{{item.img}}' class='swiper_box_img' mode='aspectFill'></image>
     </swiper-item>
 </swiper>
-

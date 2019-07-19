@@ -1,4 +1,18 @@
 <view class='head_box'>
+  <view class='detail_head'>    
+    <view class='detail_info'>
+      <view class='detail_info1'>        
+        <view>
+          <block wx:if="{{info.consumeStatus == 1}}">已消费</block>
+        <block wx:elif="{{info.payStatus == 1}}">未消费</block>
+        <block wx:elif="{{item.status == 3}}">已取消</block>
+        <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}">未支付</block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='head_box'>
   <view class='detail_head'>
     <view class='detail_img_box'>
       <image class='detail_img' src="{{info.img}}" data-src="{{info.img}}" bindtap='review_img'>
@@ -36,4 +50,15 @@
     </image>
   </view>
   </block>
+</view>
+
+<view class='head_box'>
+  <view class='detail_head'>    
+    <view class='detail_info'>
+      <view class='detail_info1'>
+        <view>订单编号：{{info.orderNo}}</view>
+        <view>下单时间：{{info.createTime}}</view>
+      </view>
+    </view>
+  </view>
 </view>
