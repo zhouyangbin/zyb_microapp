@@ -18,6 +18,7 @@ Page({
         typeId: 1,
         name: '待消费',
         url: '../order/order?tab_index=2',
+        // url: '../QR_check_order/QR_check_order?orderId=114',
         imageurl: '../../component/images/person/personal_consume.png',
       }
     ],

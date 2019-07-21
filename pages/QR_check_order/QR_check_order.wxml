@@ -24,7 +24,7 @@
             <block wx:if="{{item.consumeStatus == 1}}">已消费</block>
             <block wx:elif="{{item.payStatus == 1}}">未消费</block>
             <block wx:elif="{{item.status == 3}}">已取消</block>
-            <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}"><button type="primary" size='mini'> 去支付 </button></block>
+            <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}"> 去支付</block>
           </text>
         </view>
         <view class="textarea text_26rpx">

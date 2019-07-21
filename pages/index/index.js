@@ -91,8 +91,8 @@ Page({
     let data = this.data.address_data;
     let sendData = null;
     sendData = {
-      // longitude: data.longitude,
-      // latitude: data.latitude,
+      longitude: data.longitude,
+      latitude: data.latitude,
       page: that.data.page,
       limit: that.data.limit,
     };

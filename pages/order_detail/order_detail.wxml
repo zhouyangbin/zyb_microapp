@@ -5,8 +5,8 @@
         <view>
           <block wx:if="{{info.consumeStatus == 1}}">已消费</block>
         <block wx:elif="{{info.payStatus == 1}}">未消费</block>
-        <block wx:elif="{{item.status == 3}}">已取消</block>
-        <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}">未支付</block>
+        <block wx:elif="{{info.status == 3}}">已取消</block>
+        <block wx:elif="{{info.consumeStatus == 0 && info.payStatus == 0}}">未支付</block>
         </view>
       </view>
     </view>
