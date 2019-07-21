@@ -118,6 +118,13 @@ page{
   height: 30rpx;
   padding-left: 10rpx;
 }
+.getphone{
+  height:60rpx;
+  border:solid 2rpx #F60;
+  line-height:60rpx;
+  background:#fff;
+  font-weight: 500;
+}
 .bottom_box{
   width: 690rpx;
   display: flex;

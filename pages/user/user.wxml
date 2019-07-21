@@ -6,7 +6,6 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-
 <block wx:if="{{hidden != true}}">
 <view class='list'bindtap='getScancode'>
   <view class='list_left'>
