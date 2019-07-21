@@ -39,9 +39,9 @@
         </view>
         <view  class='pro_box_info'>
           <view class='pro_box_info1'>
-            <view class='pro_box_info1_name'>项目名称</view>
-            <view class='pro_box_info1_desc'>项目描述</view>
-            <view class='pro_box_info1_price'>项目价格</view>
+            <view class='pro_box_info1_name'>{{item.name}}</view>
+            <view class='pro_box_info1_desc'>{{item.descr}}</view>
+            <view class='pro_box_info1_price'>￥{{item.price}}</view>
           </view>
         </view>
     </view>
