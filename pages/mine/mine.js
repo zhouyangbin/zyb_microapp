@@ -1,14 +1,14 @@
 // pages/mine/mine.js
 var app = getApp()
 const wxConfig = require('../../wxConfig.js')
+var user = wx.getStorageSync('user');
 // pages/mine/mine.js
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    orderItems: [
-      {
+    orderItems: [{
         typeId: 0,
         name: '待支付',
         url: '../order/order?tab_index=3',
@@ -23,17 +23,18 @@ Page({
       }
     ],
     hidden: false,
+    number: 0,
   },
   //事件处理函数
-  toOrder: function (e) {
-    if(e.currentTarget.dataset.url != undefined) {
+  toOrder: function(e) {
+    if (e.currentTarget.dataset.url != undefined) {
       wx.reLaunch({
         url: e.currentTarget.dataset.url
       })
     }
-    
+
   },
-  onLoad: function () {
+  onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -61,19 +62,21 @@ Page({
       })
     }
     this.checkScan();
+    this.scan();
   },
-  getUserInfo: function (e) {
-    console.log(e)
+  getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   },
-  myAddress: function (e) {
-    wx.navigateTo({ url: '../addressList/addressList' });
+  myAddress: function(e) {
+    wx.navigateTo({
+      url: '../addressList/addressList'
+    });
   },
-  getScancode: function () {
+  getScancode: function() {
     var _this = this;
     // 允许从相机和相册扫码
     wx.scanCode({
@@ -92,9 +95,7 @@ Page({
     })
   },
   // 检查是否是扫码人员
-  checkScan(e) {
-    var user = wx.getStorageSync('user');
-    console.log(user);
+  checkScan: function(e) {
     var that = this;
     wx.request({
       url: wxConfig.base_url + '/mini-scan/check-scan',
@@ -103,16 +104,43 @@ Page({
         openid: user.openid,
         cellPhone: user.phoneNumber,
       },
-      header: { 'content-type': 'application/x-www-form-urlencoded' },
-      success: function (res) {
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function(res) {
         if (res.data.code != 0) {
           that.setData({
             hidden: true
           })
         }
-      }, fail: function (err) {
+      },
+      fail: function(err) {
 
       }
     })
   },
+  // 检查扫码人员当天扫码数量
+  scan: function() {
+    var that = this;
+    let d = new Date();
+    let date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    wx.request({
+      url: wxConfig.base_url + '/mini-scan/scan',
+      data: {
+        openid: user.openid,
+        cellPhone: user.phoneNumber,
+        startTime: date + ' 00:00:00',
+        endTime: date + ' 23:59:59'
+      },
+      success: function(res) {
+        if (res.data.data != null) {
+          that.setData({
+            number: res.data.data.count
+          })
+        }
+      },
+      fail: function(err) {
+      }
+    })
+  }
 })

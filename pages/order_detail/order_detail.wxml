@@ -51,14 +51,7 @@
   </view>
   </block>
 </view>
-
 <view class='head_box'>
-  <view class='detail_head'>    
-    <view class='detail_info'>
-      <view class='detail_info1'>
-        <view>订单编号：{{info.orderNo}}</view>
-        <view>下单时间：{{info.createTime}}</view>
-      </view>
-    </view>
-  </view>
+  <view class='text_26rpx line_height_60'>订单编号：{{info.orderNo}}</view>
+  <view class='text_26rpx line_height_60'>下单时间：{{info.createTime}}</view>
 </view>
