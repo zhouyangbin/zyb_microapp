@@ -69,10 +69,14 @@ page{
 .scan_QR_box{
   width: 100%;
   padding: 30rpx 0 30rpx 0rpx;
+  text-align: center;
 }
 .scan_QR_box_img{  
   width: 450rpx;
   height: 400rpx;
+}
+.order_detail{
+  display: flex;
 }
 .bottom_box{
   width: 690rpx;
