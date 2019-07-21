@@ -32,7 +32,7 @@ Page({
     let sendData = null;
     if(user.phoneNumber != undefined) {
       this.setData({
-        phoneNumber: user.phoneNumber
+        phoneNumber: user.phoneNumber.replace(/^(\d{4})\d{4}(\d+)/, "$1****$2")
       });
     };
     

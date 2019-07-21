@@ -46,7 +46,7 @@
     <view class='list_left'>
       {{phoneNumber}}
       <block wx:if="{{phoneNumber == ''}}">
-      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+      <button class='getphone text_26rpx' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
       </block>
     </view>
   </view>

@@ -32,8 +32,8 @@
   </view>
 </view>
 <view class='order_empty'>
-  <view class='bg'>
-    <image class='img' src="../../component/images/order.png"></image>
+  <view class='order_empty_bg'>
+    <image class='bgorder_empty_bg_img' src="../../component/images/order.png"></image>
   </view>
   <view>
     <text>暂无数据</text>

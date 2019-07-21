@@ -1,3 +1,4 @@
+const app = getApp()
 Component({
   /**
  1. 组件的属性列表
@@ -6,17 +7,12 @@ Component({
     searchArray: {
       type: Array,
     },
-    // 初始时要展示的内容
-    // currentText: {
-    //   type: String,
-    // }
   },
-
   /**
  2. 组件的初始数据
    */
   data: {
-    currentText:'北京',
+    currentText:'附近',
     isShow: false, // 初始option不显示
     arrowAnimation: {}, // 箭头的动画
     inputValue:'',
@@ -35,12 +31,7 @@ Component({
       }
     },
     bindKeyInput: function (e) {
-      this.setData({
-        inputValue: e.detail.value,
-        setInterval_type:"1"
-      },()=>{
-        this.startSetInter(e.detail.value);
-      })
+      app.getPermission()
     },
     startSetInter: function (value) {
       var that = this;
