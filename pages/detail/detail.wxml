@@ -11,9 +11,15 @@
             <view class='detail_info1_price'>￥{{info.price}}</view>
           </view>
           <view  class='detail_info2'>
-            <view class='detail_info2_minus' bindtap='total_minus'>-</view>
+            <view class='detail_info2_minus' bindtap='total_minus'>
+            <image class='detail_info2_plus_img' src="../../static/images/minus.png">
+              </image>
+            </view>
             <view class='detail_info2_total'>{{total}}</view>
-            <view class='detail_info2_plus' bindtap='total_plus'>+</view>
+            <view class='detail_info2_plus' bindtap='total_plus'>
+              <image class='detail_info2_plus_img' src="../../static/images/plus_1.png" >
+              </image>
+            </view>
           </view>
         </view>
     </view>
