@@ -1,9 +1,10 @@
 page{
+  width: calc(100% - 60rpx);
   background-color: rgb(240, 239, 239);
   padding: 30rpx;
 }
 .head_box{
-  width:630rpx;
+  width:inherit;
   border-radius:10rpx;
   height:auto;
   display:block;
@@ -57,14 +58,12 @@ page{
 .detail_info2_minus{
   width: 40rpx;
   height: 40rpx;
-  line-height: 20rpx;
+  line-height: 40rpx;
   text-align: center;
   padding: 5rpx 5rpx;
   background: #fffefe;
   border:solid 1px rgb(236, 236, 236);
   border-radius: 50%;
-  color:#ddd;
-  font-size: 80rpx;
 }
 .detail_info2_total{
   padding: 10rpx 20rpx;
@@ -79,8 +78,10 @@ page{
   padding: 5rpx 5rpx;
   background:  rgb(69, 188, 192);
   border-radius: 50%;
-  color: rgb(255, 255, 255);
-  font-size: 44rpx;
+}
+.detail_info2_plus_img{
+  width: 32rpx;
+  height: 32rpx;
 }
 .detail_desc{
   width: 630rpx;
@@ -126,7 +127,7 @@ page{
   font-weight: 500;
 }
 .bottom_box{
-  width: 690rpx;
+  width: calc(100% - 60rpx);
   display: flex;
   justify-content: center;
   align-items: center;

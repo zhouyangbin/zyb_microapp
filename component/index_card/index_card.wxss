@@ -1,10 +1,8 @@
-.index_card{
-  width: 100%;
-}
 .card_box {
-  width: 690rpx;
+  width: 90%;
   display: flex;
-  padding: 20rpx 0;
+  padding: 5% 5%;
+  overflow-x:hidden;
   border-bottom: 2rpx solid #e2e2e2;
 }
 .card_img_box{
@@ -21,7 +19,7 @@ background-size:100% 100%;
   width: 100%;
 }
 .card_info{
-  width: 490rpx;
+  width: calc(100% - 200rpx);
   padding-left: 20rpx;
 }
 .card_info1{

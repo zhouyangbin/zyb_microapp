@@ -1,9 +1,10 @@
 .section-select-box {
-  width: 700rpx;
+  width: calc(100% - 60rpx);
   padding: 20rpx 30rpx;
   border-bottom: 2rpx solid #e2e2e2;
 }
 .select-content {
+  width:100%;
   background: white;
   height: 80rpx;
   line-height: 80rpx;
@@ -39,8 +40,8 @@
 }
 
 .select-list {
+  width: calc(100% - 30rpx);
   background: white;
-  width: inherit;
   position: absolute;
   border: 2rpx solid #e2e2e2;
   border-top: none;
@@ -51,6 +52,7 @@
 }
 
 .select-list-item {
+  width: calc(100% - 40rpx);
   height: 30px;
   line-height: 30px;
   border-top: 2rpx solid #e2e2e2;
