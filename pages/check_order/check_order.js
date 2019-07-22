@@ -9,7 +9,7 @@ Page({
     page: 1,
     limit: 5,
     orderArray: [],
-    height: wx.getSystemInfoSync().windowHeight - 20,
+    height: wx.getSystemInfoSync().windowHeight-40,
     searchLoading: true, //"上拉加载"的变量，默认false，隐藏  
     searchLoadingComplete: true //“没有数据”的变量，默认false，隐藏
   },
@@ -64,7 +64,7 @@ Page({
           });
         } else {
           that.setData({
-            orderList: [],
+            orderArray: [],
             total: res.data.count,
             searchLoadingComplete: false,
             searchLoading: true

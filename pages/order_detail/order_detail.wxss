@@ -73,7 +73,7 @@ page{
 }
 .scan_QR_box_img{  
   width: 450rpx;
-  height: 400rpx;
+  height: 450rpx;
 }
 .order_detail{
   display: flex;

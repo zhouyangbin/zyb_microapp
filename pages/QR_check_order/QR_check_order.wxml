@@ -1,6 +1,6 @@
 <view class='check_order-box'>
   <view class='check_order-content'>
-   <input class='check_order-text'placeholder="请输入消费券码"name="phone" type="number" maxlength="11"  bindinput="bindKeyInput" value="{{inputValue}}" bindfocus="activeFocus" />
+   <input class='check_order-text'placeholder="请输入消费券码"name="phone" type="number" maxlength="100"  bindinput="bindKeyInput" value="{{inputValue}}" bindfocus="activeFocus" />
     <text class='check_btn-text' bindtap='check_phone_order'>{{currentText}}</text>
   </view>
 </view>
