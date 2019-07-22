@@ -6,10 +6,16 @@
 </view>
 <scroll-view scroll-y="true"  style="height:{{height+'px'}}" class="container" bindscrolltolower="searchScrollLower">
     <Order_card height="{{height}}"  orderList='{{orderArray}}'></Order_card>
-    <view class="loading complete" hidden="{{searchLoadingComplete}}">
-      已加载全部
-    </view> 
+    <view class='order_empty' wx:if="{{!orderArray.length}}">
+      <view class='order_empty_bg'>
+        <image class='bgorder_empty_bg_img' src="../../component/images/order.png"></image>
+      </view>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
 </scroll-view>
+
 <loading hidden="{{searchLoading}}">
     加载中...
 </loading>

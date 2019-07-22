@@ -1,0 +1,90 @@
+page{
+  background-color: rgb(240, 239, 239);
+  padding: 30rpx;
+}
+.head_box{
+  width:630rpx;
+  border-radius:10rpx;
+  height:auto;
+  display:block;
+  background:#fff;
+  padding:30rpx;
+  margin-bottom: 30rpx;
+}
+.detail_head {
+  width: 630rpx;
+  display: flex;
+  background: #fff;
+}
+.detail_img_box{
+  width: 150rpx;
+  height: 150rpx;
+  overflow: hidden;
+}
+.detail_img{
+  width: 140rpx;
+  height:140rpx;
+  border-radius: 20rpx;
+}
+.detail_info{
+  width: 450rpx;
+  padding-left: 20rpx;
+  display: flex;
+  align-items:center;
+}
+.detail_info1{
+  width: 300rpx;
+}
+.detail_info1_name{
+  color: #000;
+  font-weight:500;
+  font-size: 30rpx;
+}
+.detail_info1_desc{
+  color: rgb(141, 140, 140);
+  font-size: 26rpx;
+}
+.detail_info1_price{
+  color: #000;
+  font-size: 26rpx;
+}
+.list{
+  width: 100%;
+  padding: 30rpx 0 30rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26rpx;
+  border-bottom:solid 2rpx rgb(243, 243, 243);
+}
+.list_left{
+  display: flex;
+  align-items: center;
+}
+.list_img{
+  width: 30rpx;
+  height: 30rpx;
+  padding-left: 10rpx;
+}
+.scan_QR_box{
+  width: 100%;
+  padding: 30rpx 0 30rpx 0rpx;
+  text-align: center;
+}
+.scan_QR_box_img{  
+  width: 450rpx;
+  height: 450rpx;
+}
+.order_detail{
+  display: flex;
+}
+.bottom_box{
+  width: 690rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  position: fixed;
+  bottom: 10rpx;
+  border-radius:10rpx;
+}

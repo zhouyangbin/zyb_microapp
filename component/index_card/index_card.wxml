@@ -5,7 +5,7 @@
       </view>
       <view  class='card_info'>
         <view  class='card_info1'>
-          <text class='card_info1_text1'>{{item.name}}</text>
+          <text class='card_info1_text1 '>{{item.name}}</text>
         </view>
         <view  class='card_info2'>
           <text class='card_info2_text1'>{{item.descr}}</text>
