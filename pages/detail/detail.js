@@ -1,6 +1,5 @@
 var wxConfig = require('../../wxConfig.js')
 const app = getApp()
-var user = wx.getStorageSync('user');
 Page({
   data: {
     info: null,
@@ -28,6 +27,7 @@ Page({
   },
   // 获取项目详情
   get_product_detail() {
+    var user = wx.getStorageSync('user');
     let that = this;
     let sendData = null;
     if(user.phoneNumber != undefined) {
@@ -66,6 +66,7 @@ Page({
   },
   // 获取活动优惠
   get_active(){
+    var user = wx.getStorageSync('user');
     var that = this;
     wx.request({
       url: wxConfig.base_url+'/mini-active/actives',
@@ -112,10 +113,7 @@ Page({
     })
   },
   pay(e) {
-    // console.log(this.data.total);
-    // console.log(this.data.info);
-    // console.log(this.data.info.price * this.data.total);
-    // console.log(this.data.phoneNumber);
+    var user = wx.getStorageSync('user');
     
     if(this.data.phoneNumber == '') {
       wx.showToast({
@@ -125,7 +123,7 @@ Page({
       })
       return;
     }
-    wx.request({
+    wx.request({      
       url: wxConfig.base_url + '/mini-order/order',
       method: 'POST',
       data: {
