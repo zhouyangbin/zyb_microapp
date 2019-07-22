@@ -9,9 +9,9 @@ Page({
     page: 1,
     limit: 5,
     orderArray: [],
-    height: wx.getSystemInfoSync().windowHeight - 50,
-    searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
-    searchLoadingComplete: false //“没有数据”的变量，默认false，隐藏
+    height: wx.getSystemInfoSync().windowHeight - 20,
+    searchLoading: true, //"上拉加载"的变量，默认false，隐藏  
+    searchLoadingComplete: true //“没有数据”的变量，默认false，隐藏
   },
   onLoad: function() {
 
@@ -48,7 +48,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success(res) {
-        if (res.data.data.length != 0) {
+        if (res.data.data) {
           let searchList = [];
           //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
           that.data.isFromSearch ? searchList = res.data.data : searchList = that.data.orderArray.concat(res.data.data);
@@ -59,15 +59,15 @@ Page({
           }
           that.setData({
             orderArray: searchList, // 获取数据数组
+            searchLoadingComplete: true,
             searchLoading: true
           });
         } else {
           that.setData({
-            hidden: true,
-            listArray: [],
+            orderList: [],
             total: res.data.count,
-            searchLoadingComplete: true,
-            searchLoading: false
+            searchLoadingComplete: false,
+            searchLoading: true
           }, () => {
             wx.showToast({
               title: "没有数据",
@@ -95,7 +95,7 @@ Page({
       page: 1,
       orderArray: [],
       isFromSearch: true,
-      searchLoading: true,
+      searchLoading: false,
       searchLoadingComplete: false
     })
     this.fetchSearchList();

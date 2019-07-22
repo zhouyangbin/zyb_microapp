@@ -6,6 +6,10 @@
 </view>
 <scroll-view scroll-y="true"  style="height:{{height+'px'}}" class="container" bindscrolltolower="searchScrollLower">
     <Order_card height="{{height}}"  orderList='{{orderArray}}'></Order_card>
-  <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
-  <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+    <view class="loading complete" hidden="{{searchLoadingComplete}}">
+      已加载全部
+    </view> 
 </scroll-view>
+<loading hidden="{{searchLoading}}">
+    加载中...
+</loading>
