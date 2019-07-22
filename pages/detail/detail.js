@@ -1,4 +1,5 @@
-var wxConfig = require('../../wxConfig.js')
+var wxConfig = require('../../wxConfig.js');
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
   data: {
@@ -114,7 +115,6 @@ Page({
   },
   pay(e) {
     var user = wx.getStorageSync('user');
-    
     if(this.data.phoneNumber == '') {
       wx.showToast({
         title: '获取手机号失败',
@@ -123,6 +123,7 @@ Page({
       })
       return;
     }
+    util.showLoading('加载中...');
     wx.request({      
       url: wxConfig.base_url + '/mini-order/order',
       method: 'POST',
@@ -130,7 +131,7 @@ Page({
         openid: user.openid,
         productId:this.data.info.productId,
         ticketNums: this.data.total,
-        cellPhone: this.data.phoneNumber,
+        cellPhone: user.phoneNumber,
         payableAmount: this.data.payableAmount,
         realAmount: this.data.realAmount
       },
@@ -138,6 +139,7 @@ Page({
       success: function (e) {
         // 创建支付订单失败
         if(e.data.code != 0) {
+            util.hideLoading();
             wx.showToast({
               title: e.data.msg,
             })
@@ -156,11 +158,13 @@ Page({
                 signType: pay.data.signType,
                 paySign: pay.data.paySign,
                 success(res) {
+                  util.hideLoading();
                   wx.navigateTo({
                     url: "../paySuccess/paySuccess?order_id=" + pay.data.orderId,
                   })
                 },
                 fail(res) {
+                  util.hideLoading();
                   wx.navigateTo({
                     url: "../order/order?tab_index=3",
                   })
