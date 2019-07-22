@@ -35,10 +35,10 @@ body{
   background:#F60;
 }
 .line_height_40{
-  line-height: 40rpx;
+  line-height: 40rpx !important;
 }
 .line_height_60{
-  line-height: 60rpx;
+  line-height: 60rpx !important;
 }
 .box_shadow_2_2_2_243{
   box-shadow:0px 2px 2px 2px rgb(243, 243, 243);
