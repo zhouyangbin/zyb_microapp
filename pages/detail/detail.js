@@ -9,7 +9,9 @@ Page({
     phoneNumber: '',
     activeContent: '暂无优惠',
     payableAmount: 0,
-    realAmount: 0
+    realAmount: 0,
+    down:0,
+    up:0,
   },
   onLoad: function(e) {
     this.setData({
@@ -208,4 +210,16 @@ Page({
       },
     });
   },
+  down(e){
+    this.setData({
+      down:1,
+      up: 0,
+    })
+  },
+  up(){
+    this.setData({
+      down: 0,
+      up: 1,
+    })
+  }
 })

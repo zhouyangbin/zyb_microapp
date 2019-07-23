@@ -57,6 +57,6 @@
     </view>
   </view>
 </view>
-<view class='bottom_box background_F60 ' bindtap='pay'>
+<view class='bottom_box background_F60 {{down==1 ? "down":""}} {{up==1 ? "up":""}} ' bindtap='pay'  bindtouchstart="down" bindtouchend="up">
     <text class='text_36rpx color_Ffff font_weiget_blod'>￥{{realAmount}} 立即支付 </text>
 </view>

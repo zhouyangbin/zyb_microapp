@@ -49,3 +49,19 @@ background-repeat:no-repeat;
 background-size:100% 100%;
 -moz-background-size:100% 100%;
 }
+.down{
+    animation:onMouseDown 0.5s linear;
+-webkit-animation:onMouseDown 0.5s linear;} 
+.up{animation:onMouseUp 0.5s linear;
+-webkit-animation:onMouseUp 0.5s linear;} 
+@keyframes onMouseDown
+{
+from {opacity: 1}
+to {opacity: 0.2}
+}
+
+@-webkit-keyframes onMouseUp /*Safari and Chrome*/
+{
+from {opacity: 0.2}
+to {opacity: 1}
+}
