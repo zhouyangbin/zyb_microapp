@@ -31,7 +31,7 @@
     </view>
   </view>
 </view>
-<block wx:if="{{orderList == null}}">
+<block wx:if="{{orderList.length == 0}}">
 <view class='order_empty'>
   <view class='order_empty_bg'>
     <image class='bgorder_empty_bg_img' src="../../component/images/order.png"></image>

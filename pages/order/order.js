@@ -56,7 +56,11 @@ Page({
       sendData.payStatus = 1
     }
     if (that.data.tab_index == 3) {
-      sendData.payStatus = 0
+      sendData.payStatus = 0;
+      sendData.status = 2;
+    }
+    if(that.data.tab_index == 5) {
+      sendData.status = 2;
     }
     wx.request({//index  product list
       url: wxConfig.base_url + "/mini-order/orders",

@@ -1,7 +1,7 @@
 // pages/mine/mine.js
 var app = getApp()
 const wxConfig = require('../../wxConfig.js')
-var user = wx.getStorageSync('user');
+var util = require('../../utils/util.js');
 // pages/mine/mine.js
 Page({
   data: {
@@ -18,12 +18,12 @@ Page({
         typeId: 1,
         name: '待消费',
         url: '../order/order?tab_index=2',
-        // url: '../QR_check_order/QR_check_order?orderId=114',
         imageurl: '../../component/images/person/personal_consume.png',
       }
     ],
     hidden: false,
     number: 0,
+    scene:"",
   },
   //事件处理函数
   toOrder: function(e) {
@@ -34,7 +34,15 @@ Page({
     }
 
   },
-  onLoad: function() {
+  onLoad: function(query) {
+    query.scene = "orderId=216";
+    const scene = decodeURIComponent(query.scene);
+    if(scene != "") {
+      this.setData({
+        scene: scene
+      })
+    }
+    console.log("scene:"+scene);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -82,9 +90,8 @@ Page({
     wx.scanCode({
       success: (res) => {
         var result = res.result;
-        console.log(result);
         wx.navigateTo({
-          url: "../QR_check_order/QR_check_order?key_word=" + 123,
+          url: "../QR_check_order/QR_check_order?" + this.data.scene,
         })
       }
     })
@@ -96,6 +103,7 @@ Page({
   },
   // 检查是否是扫码人员
   checkScan: function(e) {
+    let user = wx.getStorageSync('user');
     var that = this;
     wx.request({
       url: wxConfig.base_url + '/mini-scan/check-scan',
@@ -121,6 +129,7 @@ Page({
   },
   // 检查扫码人员当天扫码数量
   scan: function() {
+    let user = wx.getStorageSync('user');
     var that = this;
     let d = new Date();
     let date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
