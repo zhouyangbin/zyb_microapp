@@ -16,7 +16,8 @@ background-size:100% 100%;
 -moz-background-size:100% 100%;
 }
 .card_img{
-  width: 100%;
+  width: 180rpx;
+  height: 180rpx;
 }
 .card_info{
   width: calc(100% - 200rpx);

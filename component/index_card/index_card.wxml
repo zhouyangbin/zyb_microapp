@@ -1,6 +1,6 @@
   <view class='card_box' bindtap='detail' wx:for="{{list}}" data-item='{{item}}' data-index="{{index}}" wx:key='{{index}}'>
       <view class='card_img_box'>
-        <image class='card-img' src="{{item.img}}">
+        <image class='card_img' src="{{item.img}}">
         </image>
       </view>
       <view  class='card_info'>
