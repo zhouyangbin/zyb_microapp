@@ -32,8 +32,6 @@ Page({
       },
       success(res) {
         if (res.data.data) {
-          let date = new Date(new Date(res.data.data.createTime));
-          res.data.data.createTime = util.formatTime(date);;
           that.setData({
             info: res.data.data
           })

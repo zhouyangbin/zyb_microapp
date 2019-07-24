@@ -11,9 +11,12 @@ Page({
     limit: 5,
   },
   onLoad: function(e) {
-    console.log(e);
+    if (e.scene != undefined) {
+      const scene = decodeURIComponent(e.scene);
+      this.details(scene.substring(8));
+    }
     // 从订单详情页跳转过来
-    if (e.orderId != undefined) {
+    else if (e.orderId != undefined) {
       this.details(e.orderId);
     }
     if (e.key_word != undefined) {
@@ -88,7 +91,6 @@ Page({
         orderId: e
       },
       success(res) {
-        res.data.data.createTime = util.formatTime(new Date(res.data.data.createTime));
         that.setData({
           item: res.data.data
         });

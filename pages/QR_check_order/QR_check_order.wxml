@@ -13,23 +13,34 @@
           <text class='card_info1_text1'>订单时间:</text>
           <text class='card_info1_text2'>{{item.createTime}}</text>
         </view>
-
-        <view  class='card_info1'>
-          <text class='card_info1_text1'>订单总价:</text>
-          <text class='card_info1_text2'>￥{{item.realAmount}}</text>
-        </view>
+        <block wx:if="{{item.consumeStatus == 1}}">
+          <view  class='card_info1'>
+            <text class='card_info1_text1'>消费时间:</text>
+            <text class='card_info1_text2'>{{item.completionTime}}</text>
+          </view>
+        </block>
+        <block wx:if="{{item.playTime != 0}}">
+          <view class='card_info1'>
+          <text class='card_info1_text1'>游玩时长:</text>
+            <text class='card_info1_text3'>{{item.playTime}} </text>
+            <text class='card_info1_text2'>分钟</text>
+          </view>
+        </block>
         <view  class='card_info1'>
           <text class='card_info1_text1'>订单状态:</text>
-          <text class='card_info1_text2'>
+          <text class='card_info1_text3'>
             <block wx:if="{{item.consumeStatus == 1}}">已消费</block>
             <block wx:elif="{{item.payStatus == 1}}">未消费</block>
             <block wx:elif="{{item.status == 3}}">已取消</block>
             <block wx:elif="{{item.consumeStatus == 0 && item.payStatus == 0}}"> 去支付</block>
           </text>
         </view>
-        <view class="textarea text_26rpx">
-          <textarea placeholder="请输入订单备注" placeholder-style="color:#000;"  />
+        <view class='card_info1'>
+          <text class='card_info1_text1'>购票数量：</text>
+          <text class='card_info1_text3'>{{item.ticketNums}}</text>
+          <text class='card_info1_text2'> 张</text>
         </view>
+        
 </view>
 <view class='pro_box'>
     <view class='pro_box_content'>

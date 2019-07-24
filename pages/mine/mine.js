@@ -35,14 +35,12 @@ Page({
 
   },
   onLoad: function(query) {
-    query.scene = "orderId=216";
     const scene = decodeURIComponent(query.scene);
     if(scene != "") {
       this.setData({
         scene: scene
       })
     }
-    console.log("scene:"+scene);
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -85,13 +83,20 @@ Page({
     });
   },
   getScancode: function() {
-    var _this = this;
+    let that = this;
     // 允许从相机和相册扫码
     wx.scanCode({
       success: (res) => {
-        var result = res.result;
+        let result = res.result;
+        let scene = [];
+        if(result !=undefined) {
+          scene = result.split(";");
+          that.setData({
+            scene: scene[scene.length-1]
+          })
+        }
         wx.navigateTo({
-          url: "../QR_check_order/QR_check_order?" + this.data.scene,
+          url: "../QR_check_order/QR_check_order?orderId=" + this.data.scene,
         })
       }
     })

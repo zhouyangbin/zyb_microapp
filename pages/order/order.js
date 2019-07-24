@@ -68,10 +68,6 @@ Page({
       method: 'GET',
       header: {'content-type': 'application/json'},
       success(res) {
-        for(var i in res.data.data) {
-          let date = new Date(new Date(res.data.data[i].createTime));
-          res.data.data[i].createTime = util.formatToYMD(date);
-        }
         if (res.data.data) {
           that.setData({
             hidden: true,

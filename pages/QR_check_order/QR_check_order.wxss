@@ -52,6 +52,11 @@
   color: rgb(141, 140, 140);
   font-size: 26rpx;
 }
+.card_info1_text3{
+  color: rgb(253, 2, 57);
+  font-size: 40rpx;
+  font-weight: bold;
+}
 .card_info2_text1{
   color: rgb(177, 177, 177);
   font-size: 26rpx;
