@@ -97,7 +97,6 @@ App({
     let that = this;
     wx.chooseLocation({
       success: function (res) {
-        console.log(res,"???")
         that.globalData.Permissionaddressinfo = res;
         // obj.setData({
         //   addr: res      //调用成功直接设置地址
@@ -126,7 +125,6 @@ App({
                           //授权成功之后，再调用chooseLocation选择地方
                           wx.chooseLocation({
                             success: function (res) {
-                              console.log(res, "111???")
                               that.globalData.Permissionaddressinfo = res;
                               // obj.setData({
                               //   addr: res.address

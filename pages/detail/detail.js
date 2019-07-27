@@ -77,7 +77,6 @@ Page({
         openid: user.openid,
         adminId: this.data.admin_id
       },success(res){
-        console.log(res);
         if(res.data.data != null) {
           that.setData({
             active: res.data.data,

@@ -10,8 +10,6 @@ Page({
         var user = wx.getStorageSync("user");        
         wx.getUserInfo({
           success: function(res){
-            console.log(res.userInfo);
-            console.log(res.rawData);
             var data = {
               'openid': user.openid,
               'nickName': res.userInfo.nickName,              

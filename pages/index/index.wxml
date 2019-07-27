@@ -2,7 +2,16 @@
 <loading hidden="{{hidden}}">
     加载中...
 </loading>
-<Search class="section-select" search-array='{{searchArray}}'  current-text="{{current_text}}" bind:getNowData='getSearch_text'></Search>
+<Search class="section-select" current-text="{{current_text}}" bind:getNowData='getSearch_text'></Search>
 <scroll-view scroll-y  style="height:{{height+'px'}}"  class="container" bindscrolltolower="scroll_bottom">
     <Index_card height="{{height}}"  list='{{listArray}}'></Index_card>
+
+    <view class='order_empty' wx:if="{{!listArray.length}}">
+      <view class='order_empty_bg'>
+        <image class='bgorder_empty_bg_img' src="../../component/images/order.png"></image>
+      </view>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
 </scroll-view>
