@@ -15,9 +15,15 @@ Component({
   },
   methods: {
     detail(event){
-      wx.navigateTo({
-        url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
-      })
+      if (event.currentTarget.dataset.item.payStatus){
+        wx.navigateTo({
+          url: '../Consumption_order_detail/Consumption_order_detail?orderId=' + event.currentTarget.dataset.item.orderId
+        })
+      }else{
+        wx.navigateTo({
+          url: '../order_detail/order_detail?orderId=' + event.currentTarget.dataset.item.orderId
+        })
+      }
     },
     doPay(event) {
       var user = wx.getStorageSync('user');

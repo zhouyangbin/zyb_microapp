@@ -1,0 +1,51 @@
+page{
+  background-color: rgb(255, 255, 255);
+}
+.pay_head_box{
+  width:690rpx;
+  height:100px;
+  display:flex;
+  justify-content: center;
+  background:#F60;
+  padding: 30rpx;
+  line-height:60px;
+
+}
+.pay_info_box{
+  width:600rpx;
+  height:auto;
+  background:#fff;
+  padding: 30rpx;
+  margin:0 45rpx;
+}
+.pay_info_box_img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30rpx 0;
+  padding: 20rpx 0;
+}
+.pay_info_box_img_img{
+  width: 400rpx;
+  height: 400rpx;
+}
+.tips_info{
+  width:660rpx;
+  background:#fff;
+  padding: 30rpx 0rpx 0 0rpx;
+  margin:10rpx 45rpx;
+}
+.swiper_box {
+  width:660rpx;
+  background:#fff;
+  padding: 30rpx 0rpx 0 0rpx;
+  margin:0 45rpx;
+}
+.swiper_box_img {
+  width: 100%;
+  height: inherit;
+}
+
+
+
+

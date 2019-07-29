@@ -14,7 +14,8 @@
     "component/check_order_card/check_order_card",
     "component/order_card/order_card",
     "component/search/search",
-    "component/select/select"    
+    "component/select/select",
+    "pages/Consumption_order_detail/Consumption_order_detail"  
   ],
   "window": {
     "backgroundTextStyle": "light",
