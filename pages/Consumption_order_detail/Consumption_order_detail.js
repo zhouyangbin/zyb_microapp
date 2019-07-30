@@ -59,7 +59,7 @@ Page({
       url: wxConfig.base_url + '/ad/adverts',
       method: 'GET',
       data: {
-        position: 2,
+        position: 1,
         enabled: 1
       },
       success(res) {

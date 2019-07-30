@@ -15,7 +15,7 @@ Component({
   },
   methods: {
     detail(event){
-      if (event.currentTarget.dataset.item.payStatus){
+      if (event.currentTarget.dataset.item.payStatus == 1 && event.currentTarget.dataset.item.consumeStatus == 0){
         wx.navigateTo({
           url: '../Consumption_order_detail/Consumption_order_detail?orderId=' + event.currentTarget.dataset.item.orderId
         })

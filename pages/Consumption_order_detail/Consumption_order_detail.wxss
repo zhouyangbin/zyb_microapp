@@ -29,11 +29,17 @@ page{
   width: 400rpx;
   height: 400rpx;
 }
+.title_info{
+  color: #000000;
+  font-weight: bold;
+}
 .tips_info{
   width:660rpx;
   background:#fff;
   padding: 30rpx 0rpx 0 0rpx;
   margin:10rpx 45rpx;
+  color: #000000;
+  font-weight: bold;
 }
 .swiper_box {
   width:660rpx;

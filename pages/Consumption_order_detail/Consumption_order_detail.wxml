@@ -1,12 +1,12 @@
 <view class='pay_info_box box_shadow_2_2_2_243'>
-  <view class=' text_center color_b1b1b1 line_height_60 text_26rpx'>{{info.name}}</view>
+  <view class='title_info text_center color_b1b1b1 line_height_60 text_26rpx'>{{info.name}}</view>
   <view  class='pay_info_box_img'>
     <image class='pay_info_box_img_img' src="{{info.qrcode}}">
     </image>
   </view>
   <view class='flex_justify_conten_center line_height_40 text_26rpx'>
-    <view>票码<text>kgkjgk</text></view>
-    <view class='margin_left_20px'>数量<text>2</text>张</view>
+    <!-- <view>票码<text>kgkjgk</text></view> -->
+    <view class='margin_left_20px'>数量：<text>{{info.ticketNums}}</text>张</view>
   </view>
 </view>
 <view class='tips_info color_b1b1b1 line_height_30 text_26rpx'>
