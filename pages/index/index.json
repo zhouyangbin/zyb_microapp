@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "极速部落",
   "usingComponents": {
     "Select": "/component/select/select",
     "Search": "/component/search/search",

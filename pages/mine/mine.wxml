@@ -1,9 +1,10 @@
 <view class="userinfo">
-  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-btn"> 点击微信授权 </button>
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="userinfo-btn"> 点击微信授权 </button>  
   <block wx:else>
     <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </block>
+  <button wx:if="{{!phoneNumber}}" open-type="getPhoneNumber" class="userphone-btn" bindgetphonenumber="getPhoneNumber">绑定手机</button>
 </view>
 
 <view class="separate"></view>
@@ -24,7 +25,7 @@
 </view>
 
 <view class="separate"></view>
-<block wx:if="{{hidden != true}}">
+<block wx:if="{{hidden != 0}}">
 <view class="person-list">
   <view class="list-item" bindtap='getScancode'>
     <image class="item-image" src="../../component/images/person/person_scan.png"></image>

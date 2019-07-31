@@ -64,11 +64,11 @@ Page({
     };
   },
   onShow: function() {
-    if (this.data.address_data != null) {
+    if (this.data.address_data != null && app.globalData.Permissionaddressinfo != null) {
       this.setData({
         listArray: [],
         page: 1,
-        address_data: {
+        address_data: {          
           latitude: app.globalData.Permissionaddressinfo.latitude,
           longitude: app.globalData.Permissionaddressinfo.longitude
         }

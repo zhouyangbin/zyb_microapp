@@ -21,9 +21,10 @@ Page({
         imageurl: '../../component/images/person/personal_consume.png',
       }
     ],
-    hidden: false,
+    hidden: 0,
     number: 0,
     scene:"",
+    phoneNumber: ""
   },
   //事件处理函数
   toOrder: function(e) {
@@ -41,6 +42,8 @@ Page({
         scene: scene
       })
     }
+    
+    var user = wx.getStorageSync('user');    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -58,7 +61,7 @@ Page({
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
-        success: res => {
+        success: res => {          
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -67,10 +70,20 @@ Page({
         }
       })
     }
+    if(user.phoneNumber != undefined) {
+      this.setData({
+        phoneNumber: user.phoneNumber
+      });
+    }
+    
+    this.checkScan();
+    this.scan();
+  },  
+  onShow: function () {
     this.checkScan();
     this.scan();
   },
-  getUserInfo: function(e) {
+  getUserInfo: function(e) {    
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -121,9 +134,9 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function(res) {
-        if (res.data.code != 0) {
+        if (res.data.code == 0) {
           that.setData({
-            hidden: true
+            hidden: 1
           })
         }
       },
@@ -156,5 +169,38 @@ Page({
       fail: function(err) {
       }
     })
-  }
+  },
+  getPhoneNumber(e) {
+    var that = this;
+    var user = wx.getStorageSync('user');
+    wx.request({
+      url: wxConfig.base_url + '/wechat/phoneNumber',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        openid: user.openid,
+        sessionKey: user.session_key,
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+      },
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.code == 0 && res.data.data != undefined) {
+          that.setData({
+            phoneNumber: res.data.data.phoneNumber
+          });          
+          user.phoneNumber = res.data.data.phoneNumber;
+          wx.setStorageSync('user', user);
+          that.checkScan();
+        } else {
+          wx.showToast({
+            title: '获取失败',
+            icon: 'fail',
+            duration: 1000
+          });
+        }
+      },
+    });
+  },
 })

@@ -1,12 +1,12 @@
 var wxConfig = require('../../wxConfig.js')
 const app = getApp()
-var user = wx.getStorageSync('user');
 Page({
   data: {
     info: null,
     adList: []
   },
   onLoad: function(e) {
+    let user = wx.getStorageSync('user');
     this.setData({
       openid: user.openid,
       orderId: e.orderId
