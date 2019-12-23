@@ -4,10 +4,9 @@
     <image class='pay_info_box_img_img' src="{{info.qrcode}}">
     </image>
   </view>
-  <view class='flex_justify_conten_center line_height_40 text_26rpx'>
-    <!-- <view>票码<text>kgkjgk</text></view> -->
+  <view class='flex_justify_conten_center line_height_40 text_26rpx'>    
     <view class='margin_left_20px'>数量：<text>{{info.ticketNums}}</text>张</view>
-  </view>
+  </view> 
 </view>
 <view class='tips_info color_b1b1b1 line_height_30 text_26rpx'>
     请将二维码超市给检票工作人员！只能同意核验并不能退换。

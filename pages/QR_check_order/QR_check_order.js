@@ -83,7 +83,8 @@ Page({
   },
   // 订单详情
   details(e) {
-    var that = this;    
+    var that = this; 
+    let user = wx.getStorageSync('user');   
     wx.request({
       url: wxConfig.base_url + '/mini-order/details',
       data: {
@@ -96,7 +97,7 @@ Page({
         });
       },
       fail(err) {
-
+        
       }
     })
   },

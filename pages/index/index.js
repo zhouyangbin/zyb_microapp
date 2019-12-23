@@ -48,20 +48,21 @@ Page({
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true,
-            hidden: true
-          }, () => {
-            app.getLocation(that);
-            // this.getAddress()
-          })
-        }
-      })
-    };
+      app.getLocation(that);
+      // wx.getUserInfo({
+      //   success: res => {
+      //     app.globalData.userInfo = res.userInfo
+      //     this.setData({
+      //       userInfo: res.userInfo,
+      //       hasUserInfo: true,
+      //       hidden: true
+      //     }, () => {
+      //       app.getLocation(that);
+      //       // this.getAddress()
+      //     })
+      //   }
+      // })
+    }
   },
   onShow: function() {
     if (this.data.address_data != null && app.globalData.Permissionaddressinfo != null) {

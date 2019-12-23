@@ -1,6 +1,5 @@
 var wxConfig = require('../../wxConfig.js')
 const app = getApp()
-var user = wx.getStorageSync('user');
 Page({
   data: {
     info: null,
@@ -17,7 +16,8 @@ Page({
   },
   // 获取支付详情
   get_pay_detail: function() {
-    let that = this;
+    let that = this
+    var user = wx.getStorageSync('user')
     wx.request({
       url: wxConfig.base_url + "/mini-order/details",
       data: {

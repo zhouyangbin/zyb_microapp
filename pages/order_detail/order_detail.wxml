@@ -44,14 +44,24 @@
       {{info.cellPhone}}
     </view>
   </view>
-  <block wx:if="{{info.payStatus==true && info.qrcode != null}}">
-  <view class='scan_QR_box'>
+  <block wx:if="{{info.expired == true && info.payStatus==true && info.qrcode != null}}">
+  <view class='scan_QR_box'>      
     <image class='scan_QR_box_img' src="{{info.qrcode}}" data-src="{{info.qrcode}}" bindtap='review_img'>
     </image>
   </view>
   </block>
+  <block wx:else>
+  <view class='scan_QR_box'>      
+    <image class='scan_QR_box_img' src="https://api.tiyushiyanshi.com/upload/showImage?fileName=/mini_hexiao.jpg" data-src="https://api.tiyushiyanshi.com/upload/showImage?fileName=/mini_hexiao.jpg" bindtap='review_img'>
+    </image>
+  </view>
+  </block>
 </view>
-<view class='head_box'>
+<view class='head_box' wx:if="{{info.playTime > 0}}">  
+  <view class='text_26rpx line_height_60' wx:if="{{info.consumeStatus==true}}">验票时间：{{info.completionTime}}</view>
+  <view class='text_26rpx line_height_60'>截至时间：{{info.overTime}}</view>
+</view>
+<view class='head_box'>  
   <view class='text_26rpx line_height_60'>订单编号：{{info.orderNo}}</view>
   <view class='text_26rpx line_height_60'>下单时间：{{info.createTime}}</view>
 </view>

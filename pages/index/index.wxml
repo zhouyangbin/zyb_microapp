@@ -1,7 +1,7 @@
 <!--index.wxml-->
-<loading hidden="{{hidden}}">
+<!-- <loading hidden="{{hidden}}">
     加载中...
-</loading>
+</loading> -->
 <Search class="section-select" current-text="{{current_text}}" bind:getNowData='getSearch_text'></Search>
 <scroll-view scroll-y  style="height:{{height+'px'}}"  class="container" bindscrolltolower="scroll_bottom">
     <Index_card height="{{height}}"  list='{{listArray}}'></Index_card>

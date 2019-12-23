@@ -8,7 +8,7 @@
 <view class='pay_info_box'>
   <view class='color_b1b1b1 line_height_60 text_26rpx'>{{info.name}}</view>
   <view  class='pay_info_box_img box_shadow_2_2_2_243'>
-    <image class='pay_info_box_img_img' src="{{info.qrcode}}">
+    <image class='pay_info_box_img_img' src="{{info.qrcode}}" lazy-load="true">
     </image>
   </view>
   <view class='color_b1b1b1 line_height_40 text_26rpx'>

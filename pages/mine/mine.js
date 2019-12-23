@@ -17,7 +17,7 @@ Page({
       {
         typeId: 1,
         name: '待消费',
-        url: '../order/order?tab_index=2',
+        url: '../order/order?tab_index=2',        
         imageurl: '../../component/images/person/personal_consume.png',
       }
     ],

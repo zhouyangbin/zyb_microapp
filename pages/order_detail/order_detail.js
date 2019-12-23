@@ -6,12 +6,12 @@ Page({
   data: {
     info: null,
     orderId:null,
-  },
+  },  
   onLoad: function(e) {
     this.setData({
       orderId: e.orderId,
     }, () => {
-      this.get_order_detail();
+      this.get_order_detail();      
     })
   },
   // 获取项目详情
@@ -32,8 +32,8 @@ Page({
       },
       success(res) {
         if (res.data.data) {
-          that.setData({
-            info: res.data.data
+          that.setData({            
+            info: res.data.data,
           })
         }
       },
@@ -46,4 +46,17 @@ Page({
       }, //请求失败
     })
   },
+  onShow: function() {
+    // 计算时间差值
+    // let time1 = new Date(this.data.info.completionTime).getTime() + (this.data.info.playTime * 60 * 1000);
+    // console.log(time1)
+    // this.data.timer = setInterval(() => { //注意箭头函数！！
+    //   this.setData({
+    //     timeLeft: util.getTimeLeft(time1)//使用了util.getTimeLeft
+    //   });
+    //   if (this.data.timeLeft == "0天0时0分0秒") {
+    //     clearInterval(this.data.timer);
+    //   }
+    // }, 1000);
+  }
 })
