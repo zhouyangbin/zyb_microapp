@@ -6,6 +6,7 @@ Page({
     adList: []
   },
   onLoad: function(e) {
+    var user = wx.getStorageSync('user')
     this.setData({
       openid: user.openid,
       orderId: e.order_id

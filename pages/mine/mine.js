@@ -59,7 +59,7 @@ Page({
         })
       }
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
+      // 在没有 open-type=getUserInfo 版本的兼容处理      
       wx.getUserInfo({
         success: res => {          
           app.globalData.userInfo = res.userInfo
@@ -85,10 +85,39 @@ Page({
   },
   getUserInfo: function(e) {    
     app.globalData.userInfo = e.detail.userInfo
+        
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+
+    try {
+      console.log(e.detail.userInfo)
+      var user = wx.getStorageSync("user")
+      // 更新用户信息表
+      var data = {
+        'openid': user.openid,
+        'nickName': e.detail.userInfo.nickName,
+        'avatarUrl': e.detail.userInfo.avatarUrl,
+        'gender': e.detail.userInfo.gender,
+        'country': e.detail.userInfo.country,
+        'province': e.detail.userInfo.province,
+        'city': e.detail.userInfo.city,
+        'language': e.detail.userInfo.language
+      };
+      if (user.unionid != undefined) {
+        data.unionid = user.unionid;
+      };
+      wx.request({
+        url: wxConfig.base_url + '/mini-user/users',
+        method: 'POST',
+        data: data,
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        success: function (res) {
+        }
+      })
+    } catch(e) {
+    }    
   },
   myAddress: function(e) {
     wx.navigateTo({
