@@ -88,7 +88,7 @@ Page({
   },
   total_minus() {
     var totalNum = this.data.total > 1 ? this.data.total - 1 : 1;
-    var realAmount = totalNum * this.data.info.price;
+    var realAmount = (totalNum * this.data.info.price).toFixed(2);
     if(this.data.active != null) {
       if(totalNum >= this.data.active.ticketNums) {
         realAmount = (totalNum * this.data.info.price * (this.data.active.discount/10)).toFixed(2);
