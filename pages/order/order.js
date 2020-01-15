@@ -59,8 +59,9 @@ Page({
       sendData.payStatus = 0;
       sendData.status = 2;
     }
+    // 全部订单
     if(that.data.tab_index == 5) {
-      sendData.status = 2;
+      // sendData.status = 2;
     }
     wx.request({//index  product list
       url: wxConfig.base_url + "/mini-order/orders",
