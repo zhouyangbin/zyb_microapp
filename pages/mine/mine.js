@@ -130,12 +130,20 @@ Page({
     wx.scanCode({
       success: (res) => {
         let result = res.result;
-        let scene = [];
-        if(result !=undefined) {
+        let scene = [];        
+        if(result !=undefined && result != "") {          
           scene = result.split(";");
           that.setData({
             scene: scene[scene.length-1]
           })
+        } else if(res.path != undefined) {
+          let path = res.path;
+          let orderId = path.replace("pages/QR_check_order/QR_check_order?scene=orderId%3D","")
+          orderId = orderId.replace("pages/QR_check_order/QR_check_order?scene=orderId=","")
+          wx.navigateTo({
+            url: "../QR_check_order/QR_check_order?orderId=" + orderId,
+          })
+          return
         }
         wx.navigateTo({
           url: "../QR_check_order/QR_check_order?orderId=" + this.data.scene,
