@@ -14,13 +14,27 @@ Page({
     up:0,
   },
   onLoad: function(e) {
-    this.setData({
-      id: e.id,
-      admin_id: e.admin_id
-    }, () => {
-      this.get_product_detail();
-      this.get_active();
-    })
+    if (e.scene != undefined) {
+      let optionsObj = {};
+      const scene = decodeURIComponent(e.scene);
+      const arrPara = scene.split('&');
+      let arr = [];
+      for(const i in arrPara) {
+        arr = arrPara[i].split('=');
+        optionsObj[arr[0]] = arr[1];
+      }
+      this.setData({
+        id: optionsObj.id,
+        admin_id: optionsObj.admin_id
+      })
+    } else {
+      this.setData({
+        id: e.id,
+        admin_id: e.admin_id
+      })
+    }
+    this.get_product_detail();
+    this.get_active();
   },
   review_img(e) {
     wx.previewImage({

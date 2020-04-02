@@ -10,10 +10,13 @@ Page({
     page: 1,
     limit: 5,
   },
-  onLoad: function(e) {
-    if (e.scene != undefined) {
+  onLoad: function(e) {            
+    if (e.scene != undefined) {           
       const scene = decodeURIComponent(e.scene);
-      this.details(scene.substring(8));
+      var arr = scene.split('=');
+      if(arr.length > 0) {
+        this.details(arr[1]);
+      }
     }
     // 从订单详情页跳转过来
     else if (e.orderId != undefined) {
@@ -114,13 +117,18 @@ Page({
           cellPhone: user.phoneNumber
         },
         success(res){
-          console.log(res);
           if(res.data.code == 0) {
             wx.showModal({
               title: '验票',
               content: '验票成功',
-              success(r){
+              cancelText: '确定',
+              confirmText: '继续验票',
+              success(r) {
                 if (r.confirm) {
+                  wx.switchTab({
+                    url: '../mine/mine',
+                  })
+                } if (r.cancel) {
                   wx.redirectTo({
                     url: '../check_order/check_order',
                   })
@@ -131,8 +139,14 @@ Page({
             wx.showModal({
               title: '验票',
               content: res.data.msg,
+              cancelText: '确定',
+              confirmText: '继续验票',
               success(r) {
                 if (r.confirm) {
+                  wx.switchTab({
+                    url: '../mine/mine',
+                  })
+                } if (r.cancel) {
                   wx.redirectTo({
                     url: '../check_order/check_order',
                   })

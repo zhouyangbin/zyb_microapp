@@ -2,7 +2,7 @@
           <image class='pay_head_box_img_img' src="../../static/images/pay.jpg">
           </image>
         <view  class='pay_head_box_info text_36rpx'>
-          购买成功
+          购票成功
         </view>
 </view>
 <view class='pay_info_box'>
@@ -10,6 +10,9 @@
   <view  class='pay_info_box_img box_shadow_2_2_2_243'>
     <image class='pay_info_box_img_img' src="{{info.qrcode}}" lazy-load="true">
     </image>
+  </view> 
+  <view class='flex_justify_conten_center line_height_40 text_26rpx'>    
+    <view class='margin_left_20px'>数量：<text>{{info.ticketNums}}</text>张</view>
   </view>
   <view class='color_b1b1b1 line_height_40 text_26rpx'>
     前往<text class='color_F60' bindtap='my_order'>我的订单</text>查看
