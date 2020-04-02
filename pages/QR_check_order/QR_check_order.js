@@ -12,11 +12,11 @@ Page({
   },
   onLoad: function(e) {
     if (e.scene != undefined) {
-      const scene = decodeURIComponent(e.scene);
+      const scene = decodeURIComponent(e.scene);      
       this.details(scene.substring(8));
     }
     // 从订单详情页跳转过来
-    else if (e.orderId != undefined) {
+    else if (e.orderId != undefined) {      
       this.details(e.orderId);
     }
     if (e.key_word != undefined) {
