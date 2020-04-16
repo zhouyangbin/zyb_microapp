@@ -89,7 +89,8 @@ Page({
       url: wxConfig.base_url+'/mini-active/actives',
       data: {
         openid: user.openid,
-        adminId: this.data.admin_id
+        adminId: this.data.admin_id,
+        productId: this.data.id
       },success(res){
         if(res.data.data != null) {
           that.setData({
