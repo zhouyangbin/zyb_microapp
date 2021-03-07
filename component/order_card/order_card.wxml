@@ -19,7 +19,9 @@
         <text class='card_info3_text1_2'>{{item.realAmount}} </text>
       </view>
       <view class='card_info3_text2'>
-        <block wx:if="{{item.consumeStatus == 1}}">已消费</block>
+        <block wx:if="{{item.refundStatus == 1}}">已退款</block>
+        <block wx:elif="{{item.refundStatus == 4}}">退款中</block>
+        <block wx:elif="{{item.consumeStatus == 1}}">已消费</block>
         <block wx:elif="{{item.payStatus == 1}}">
           <button type="warn" data-orderno="{{item.orderNo}}" size='mini'> 去消费 </button>
         </block>

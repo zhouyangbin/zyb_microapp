@@ -48,13 +48,18 @@ Page({
       page: that.data.page,
       limit: that.data.limit,
     };
+    // 已完成
     if(that.data.tab_index == 1){
-      sendData.consumeStatus = 1
+      sendData.consumeStatus = 1;
+      sendData.refundStatus = 1;
     }
+    // 待消费
     if (that.data.tab_index == 2) {
       sendData.consumeStatus = 0;
       sendData.payStatus = 1
+      sendData.refundStatus = 0;
     }
+    // 待付款
     if (that.data.tab_index == 3) {
       sendData.payStatus = 0;
       sendData.status = 2;

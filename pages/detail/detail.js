@@ -117,6 +117,15 @@ Page({
   },
   total_plus() {
     var totalNum = this.data.total + 1;
+    // 判断是否限制购买的张数
+    if(this.data.info.limitNum > 0 && totalNum > this.data.info.limitNum) {
+      totalNum = this.data.total
+      wx.showToast({
+        title: '不可多买哟',
+        icon: 'success',
+        duration: 1000
+      })
+    }
     var realAmount = (totalNum * this.data.info.price).toFixed(2);
     if (this.data.active != null) {
       if (totalNum >= this.data.active.ticketNums) {

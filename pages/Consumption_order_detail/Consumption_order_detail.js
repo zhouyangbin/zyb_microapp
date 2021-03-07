@@ -79,4 +79,40 @@ Page({
       url: e.currentTarget.dataset.link,
     })
   },
+  doRefund: function(e) {
+    let that = this;
+    wx.showModal({
+      title: '申请退款',
+      content: '',
+      cancelText: '取消',
+      confirmText: '继续退款',
+      success(r) {
+        if (r.confirm) {
+          let user = wx.getStorageSync('user');
+          console.log(that.data.info)
+          wx.request({
+            url: wxConfig.base_url+'/mini-order/refund',
+            method: 'POST',
+            header:{'content-type': 'application/x-www-form-urlencoded'},                                 
+            data: {
+              openid: user.openid,
+              order_no: that.data.info.orderNo,
+            },
+            success(res){
+              wx.switchTab({
+                url: '../order/order',
+              });
+            },
+            fail(err){
+              wx.switchTab({
+                url: '../order/order',
+              });
+            }
+          })
+        } if (r.cancel) {
+          
+        }
+      }
+    })
+  },
 })

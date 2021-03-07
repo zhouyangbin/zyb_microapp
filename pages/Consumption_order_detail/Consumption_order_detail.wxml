@@ -7,6 +7,9 @@
   <view class='flex_justify_conten_center line_height_40 text_26rpx'>    
     <view class='margin_left_20px'>数量：<text>{{info.ticketNums}}</text>张</view>
   </view> 
+  <view class='flex_justify_conten_center line_height_40 text_26rpx'>    
+    <button type="primary" data-orderno="{{item.orderNo}}" size='mini' catchtap="doRefund"> 申请退款 </button>
+  </view> 
 </view>
 <view class='tips_info color_b1b1b1 line_height_30 text_26rpx'>
     请将二维码展示给检票工作人员！只能同意核验并不能退换。
